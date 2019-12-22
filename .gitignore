@@ -1,0 +1,6 @@
+artifacts/
+node_modules/
+temp/
+TestResults/
+
+*.lock.json

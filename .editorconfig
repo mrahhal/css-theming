@@ -1,0 +1,11 @@
+# Suppress: EC116
+
+root = true
+
+[*]
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{css,scss,json,yaml,yml,html,config,md,js,ts}]
+indent_style = space
+indent_size = 2
