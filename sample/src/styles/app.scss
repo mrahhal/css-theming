@@ -1,0 +1,30 @@
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+
+  background-color: var(--bg-main);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--blue);
+}
+
+#app {
+  text-align: center;
+}
+
+#nav {
+  padding: 30px;
+
+  a {
+    opacity: .8;
+    font-weight: bold;
+
+    &.router-link-exact-active {
+      opacity: 1;
+    }
+  }
+}
