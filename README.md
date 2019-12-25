@@ -1,6 +1,8 @@
 # CSS Theming
 
-A platform for CSS theming. Uses nothing but modern CSS and SCSS.
+A platform for CSS theming.
+
+Uses nothing but modern CSS and SCSS.
 
 ## Sample
 
