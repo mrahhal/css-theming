@@ -12,9 +12,7 @@ a {
   color: var(--blue);
 }
 
-#app {
-  text-align: center;
-}
+#app {}
 
 #nav {
   padding: 30px;
@@ -27,4 +25,9 @@ a {
       opacity: 1;
     }
   }
+}
+
+.niai-icon {
+  fill: currentColor;
+  width: 25px;
 }
