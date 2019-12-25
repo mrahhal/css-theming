@@ -1,0 +1,29 @@
+// An fg (foreground) is a color that's used as a background for a foreground component (as opposed to the background color of the app).
+
+// The whitish color that'll be used to mix fgs
+$ct-fg-target-light: #8F9EB3 !default;
+
+// The blackish color that'll be used to mix fgs
+$ct-fg-target-dark: #282F37 !default;
+
+// Swatches used in light themes
+$ct-fg-swatches-light: (
+  0: 0%,
+  1: 20%,
+  2: 30%,
+  3: 40%,
+  4: 50%,
+  5: 60%,
+) !default;
+
+// Swatches used in dark themes
+$ct-fg-swatches-dark: (
+  0: 100%,
+  1: 80%,
+  2: 60%,
+  3: 50%,
+  4: 40%,
+  5: 20%,
+) !default;
+
+$ct-fg-swatch-names: map-keys($ct-fg-swatches-light);
