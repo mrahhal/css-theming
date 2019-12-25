@@ -1,0 +1,62 @@
+@each $theme-name, $theme in $ct-themes {
+  $brightness: map-get($theme, 'brightness');
+
+  $bg-main: map-get($theme, 'bg-main');
+  $fg-target: map-get($theme, 'fg-target');
+  $fg-swatches: map-get($theme, 'fg-swatches');
+  $bd: map-get($theme, 'bd');
+  $bd-focus: map-get($theme, 'bd-focus');
+
+  $font: map-get($theme, 'font');
+  $text-color: map-get($theme, 'text-color');
+
+  $mixture-pure: if($brightness=='light', white, black);
+
+  .theme-#{$theme-name} body,
+  .ct-theme-preview.theme-#{$theme-name} {
+    // Obtain fg-0 color. Mix it with a pure mixture (white/black) to obtain fg levels.
+    // Mix all colors with fg-0 to obtain color levels.
+    $fg-0-percentage: map-get($fg-swatches, 0);
+    $fg-0: mix($fg-target, $mixture-pure, $fg-0-percentage);
+
+    $mixture: $fg-0;
+
+    @each $name in $ct-color-names {
+      @each $swatch, $percent in $ct-swatches {
+        $resolved-mixture: if($name==$fg-target, $mixture-pure, $mixture);
+        $color: ct-theme-color-get($theme, $name);
+        --#{$name}-#{$swatch}: #{mix($color, $resolved-mixture, $percent)};
+      }
+      --#{$name}-text: var(--#{$name}-500);
+    }
+
+    @each $name in $ct-semantic-color-names {
+      $target: ct-theme-semantic-color-get($theme, $name);
+      @each $swatch in $ct-swatch-names {
+        --#{$name}-#{$swatch}: var(--#{$target}-#{$swatch});
+      }
+      --#{$name}-text: var(--#{$target}-text);
+    }
+
+    // Fill in raw names as having the 500 swatch.
+    @each $name in $ct-color-names {
+      --#{$name}: var(--#{$name}-500);
+    }
+    @each $name in $ct-semantic-color-names {
+      --#{$name}: var(--#{$name}-500);
+    }
+
+    @each $level, $percent in $fg-swatches {
+      --fg-#{$level}: #{mix($fg-target, $mixture-pure, $percent)};
+    }
+
+    @include ct-text-color-variables($text-color);
+
+    --bg-main: #{$bg-main};
+
+    @include ct-bg-variables($brightness);
+    @include ct-bd-variables($brightness);
+
+    --font: #{inspect($font)};
+  }
+}
