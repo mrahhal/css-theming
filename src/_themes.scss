@@ -1,0 +1,129 @@
+// Themes define the system defined themes of the app.
+// The only required property on the theme is `brightness`. Everything else will fallback to default values if not specified.
+
+// This defines a map from a theme's name to another map that customizes the theme's props
+$ct-themes: (
+  'default': (
+    'brightness': 'light',
+    // 'colors': overrides $ct-colors-[light|dark]
+    // 'semantic-colors': overrides $ct-semantic-colors
+    // 'font': overrides $ct-font
+    // 'text-color': overrides $ct-text-color-[light|dark]
+    // 'bg-main': overrides $ct-bg-main-[light|dark]
+    // 'fg-target': overrides $ct-fg-target-[light|dark]
+    // 'fg-swatches': overrides $ct-fg-swatches-[light|dark]
+    // 'bg': overrides $ct-bg-[light|dark]
+    // 'bg-focus': overrides $ct-bg-focus-[light|dark]
+    // 'bd': overrides $ct-bd-[light|dark]
+    // 'bd-focus': overrides $ct-bd-focus-[light|dark]
+  ),
+  'default-dark': (
+    'brightness': 'dark',
+  ),
+) !default;
+
+$ct-theme-names: map-keys($ct-themes);
+
+// Normalize theme data, fill in defaults, and add computed values
+@each $theme-name, $theme in $ct-themes {
+  $brightness: map-get($theme, 'brightness');
+
+  // colors
+  $colors: map-get($theme, 'colors');
+  @if ($colors==null) { $colors: () }
+  $colors-default: if($brightness=='light', $ct-colors-light, $ct-colors-dark);
+  @each $name in $ct-color-names {
+    @if (map-get($colors, $name)==null) { $colors: map-merge($colors, ($name: map-get($colors-default, $name))) }
+  }
+  $theme: map-merge($theme, ('colors': $colors));
+
+  // semantic-colors
+  $semantic-colors: map-get($theme, 'semantic-colors');
+  @if ($semantic-colors==null) { $semantic-colors: () }
+  $semantic-colors-default: $ct-semantic-colors;
+  @each $name in $ct-semantic-color-names {
+    @if (map-get($semantic-colors, $name)==null) { $semantic-colors: map-merge($semantic-colors, ($name: map-get($semantic-colors-default, $name))) }
+  }
+  $theme: map-merge($theme, ('semantic-colors': $semantic-colors));
+
+  // font
+  @if (map-get($theme, 'font')==null) { $theme: map-merge($theme, (font: $ct-font)) }
+
+  // text-color
+  $text-color: if($brightness=='light', $ct-text-color-light, $ct-text-color-dark);
+  $theme: map-merge($theme, ('text-color': $text-color));
+
+  // bg-main
+  $bg-main: if($brightness=='light', $ct-bg-main-light, $ct-bg-main-dark);
+  @if (map-get($theme, 'bg-main')==null) {
+    $theme: map-merge($theme, ('bg-main': $bg-main));
+  }
+
+  // fg-target
+  $fg-target: if($brightness=='light', $ct-fg-target-light, $ct-fg-target-dark);
+  @if (map-get($theme, 'fg-target')==null) {
+    $theme: map-merge($theme, ('fg-target': $fg-target));
+  }
+
+  // fg-swatches
+  @if (map-get($theme, 'fg-swatches')==null) {
+    $theme: map-merge($theme, ('fg-swatches': if($brightness=='light', $ct-fg-swatches-light, $ct-fg-swatches-dark)));
+  }
+
+  // bg
+  @if (map-get($theme, 'bg')==null) {
+    $theme: map-merge($theme, ('bg': if($brightness=='light', $ct-bg-light, $ct-bg-dark)));
+  }
+  @if (map-get($theme, 'bg-focus')==null) {
+    $theme: map-merge($theme, ('bg-focus': if($brightness=='light', $ct-bg-focus-light, $ct-bg-focus-dark)));
+  }
+
+  // bd
+  @if (map-get($theme, 'bd')==null) {
+    $theme: map-merge($theme, ('bd': if($brightness=='light', $ct-bd-light, $ct-bd-dark)));
+  }
+  @if (map-get($theme, 'bd-focus')==null) {
+    $theme: map-merge($theme, ('bd-focus': if($brightness=='light', $ct-bd-focus-light, $ct-bd-focus-dark)));
+  }
+
+  // ---
+
+  $ct-themes: map-merge($ct-themes, ($theme-name: $theme));
+}
+
+@function ct-theme-color-get($theme, $color) {
+  $colors: map-get($theme, 'colors');
+  @return map-get($colors, $color);
+}
+
+@function ct-theme-semantic-color-get($theme, $color) {
+  $semantic-colors: map-get($theme, 'semantic-colors');
+  @return map-get($semantic-colors, $color);
+}
+
+@function ct-theme-semantic-color-resolved-get($theme, $color) {
+  $target: ct-theme-semantic-color-get($theme, $color);
+  @return theme-color-get($theme, $target);
+}
+
+@mixin ct-bg-variables($brightness) {
+  $bg: if($brightness=='light', $ct-bg-light, $ct-bg-dark);
+  $bg-focus: if($brightness=='light', $ct-bg-focus-light, $ct-bg-focus-dark);
+
+  --bg: #{$bg};
+  --bg-focus: #{$bg-focus};
+}
+
+@mixin ct-bd-variables($brightness) {
+  $bd: if($brightness=='light', $ct-bd-light, $ct-bd-dark);
+  $bd-focus: if($brightness=='light', $ct-bd-focus-light, $ct-bd-focus-dark);
+
+  --bd: #{$bd};
+  --bd-focus: #{$bd-focus};
+}
+
+@mixin ct-text-color-variables($text-color) {
+  --text-color-raw: #{$text-color};
+  --text-color: rgb(var(--text-color-raw));
+  --text-color-secondary: rgba(var(--text-color-raw), .7);
+}
