@@ -1,3 +1,12 @@
+// These will be used to obtain the values programmatically.
+:root {
+  --ct-swatch-names: #{$ct-swatch-names};
+  --ct-fg-swatch-names: #{$ct-fg-swatch-names};
+  --ct-color-names: #{$ct-color-names};
+  --ct-semantic-color-names: #{$ct-semantic-color-names};
+  --ct-theme-names: #{$ct-theme-names};
+}
+
 @each $theme-name, $theme in $ct-themes {
   $brightness: map-get($theme, 'brightness');
 
