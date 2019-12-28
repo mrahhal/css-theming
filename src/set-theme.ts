@@ -6,7 +6,7 @@ let previousTheme: string;
 
 function validateThemeName(theme: string) {
   for (const t of getThemeNames()) {
-    if (t == theme) {
+    if (t === theme) {
       return;
     }
   }

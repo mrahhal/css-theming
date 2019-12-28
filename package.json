@@ -7,9 +7,20 @@
   "scripts": {
     "start": "tsc --watch",
     "build": "tsc -p",
+    "lint": "tslint src/**/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["css", "theme", "theming", "scss", "css-variables"],
+  "keywords": [
+    "css",
+    "theme",
+    "theming",
+    "scss",
+    "css-variables"
+  ],
   "author": "Mohammad Rahhal",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
+  }
 }
