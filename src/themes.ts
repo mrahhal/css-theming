@@ -1,4 +1,5 @@
 import { getThemeNames } from './design-values';
+import { ensureThemeCssName, ensureThemeRawName } from './theme-name-helpers';
 
 const htmlElement = document.getElementsByTagName('html')[0];
 
@@ -33,20 +34,4 @@ export function setTheme(theme: string) {
 
 export function getTheme() {
   return ensureThemeRawName(previousTheme);
-}
-
-export function ensureThemeRawName(theme: string) {
-  if (theme.indexOf('theme-') < 0) {
-    return theme;
-  }
-
-  return theme.substring('theme-'.length, theme.length);
-}
-
-export function ensureThemeCssName(theme: string) {
-  if (theme.indexOf('theme-') === 0) {
-    return theme;
-  }
-
-  return `theme-${theme}`;
 }

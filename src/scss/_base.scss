@@ -5,6 +5,12 @@
   --ct-color-names: #{$ct-color-names};
   --ct-semantic-color-names: #{$ct-semantic-color-names};
   --ct-theme-names: #{$ct-theme-names};
+
+  @each $theme-name in $ct-theme-names {
+    $theme: map-get($ct-themes, $theme-name);
+    $brightness: map-get($theme, 'brightness');
+    --ct-theme-#{$theme-name}-props-brightness: #{$brightness};
+  }
 }
 
 @each $theme-name, $theme in $ct-themes {

@@ -1,5 +1,9 @@
 <template>
   <div class="home">
+    <div style="margin-bottom: 20px">
+      Themes: {{themesText}}
+    </div>
+
     <div style="display: flex">
       <div>
         <div class="color-palette" v-for="color in colorNames" :key="color">
