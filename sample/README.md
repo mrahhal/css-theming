@@ -1,24 +1,13 @@
-# sample
+# Sample
+
+This sample demonstrates various usages of css-theming. When you run this, hit "T" on the keyboard anywhere to flip between the 2 main themes and see instant change.
 
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Run
 ```
-npm run serve
+npm start
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
