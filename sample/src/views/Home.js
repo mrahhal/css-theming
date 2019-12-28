@@ -14,9 +14,4 @@ export default {
       semanticColorNames: getSemanticColorNames(),
     });
   },
-  computed: {
-    themesText: function () {
-      return this.themes.map(t => `${t.name} (css: ${t.cssName}) (brightness: ${t.brightness})`).join('; ');
-    },
-  }
 };
