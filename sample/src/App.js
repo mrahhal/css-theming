@@ -1,18 +1,18 @@
 import {
-  getTheme,
+  getCurrentTheme,
   initializeTheming,
   setTheme
 } from 'css-theming';
 
 export default {
-  mounted() {
+  created() {
     initializeTheming();
 
     document.addEventListener('keypress', e => {
       if (e.defaultPrevented) return;
 
       if (e.key === 't') {
-        const previousTheme = getTheme();
+        const previousTheme = getCurrentTheme();
         const newTheme = previousTheme == 'default' ? 'default-dark' : 'default';
         setTheme(newTheme);
       }

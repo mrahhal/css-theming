@@ -32,6 +32,6 @@ export function setTheme(theme: string) {
   previousTheme = theme;
 }
 
-export function getTheme() {
+export function getCurrentTheme() {
   return ensureThemeRawName(previousTheme);
 }
