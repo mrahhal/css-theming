@@ -1,7 +1,7 @@
 <template>
   <div
-    v-bind:style="{color: colorVariable, background: background}"
-    v-bind:class="{'has-text': hasText}"
+    :style="{color: colorVariable, background: background}"
+    :class="{'has-text': hasText}"
     :title="variable"
   >
     <template v-if="hasText">Sample</template>
