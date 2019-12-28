@@ -12,18 +12,14 @@ $ct-fg-swatches-light: (
   1: 20%,
   2: 30%,
   3: 40%,
-  4: 50%,
-  5: 60%,
 ) !default;
 
 // Swatches used in dark themes
 $ct-fg-swatches-dark: (
   0: 100%,
-  1: 80%,
-  2: 60%,
-  3: 50%,
-  4: 40%,
-  5: 20%,
+  1: 75%,
+  2: 50%,
+  3: 25%,
 ) !default;
 
 $ct-fg-swatch-names: map-keys($ct-fg-swatches-light);
