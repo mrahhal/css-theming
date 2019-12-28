@@ -1,10 +1,12 @@
 <template>
   <div class="home">
-    <div style="margin-bottom: 20px">
-      Themes: {{themesText}}
+    <div class="section-title">Themes</div>
+    <div class="card mb">
+      <div v-for="theme in themes" :key="theme.name">{{theme.name}}: {{theme.brightness}}</div>
     </div>
 
-    <div style="display: flex">
+    <div class="section-title">Palette</div>
+    <div class="card mb" style="display: flex">
       <div>
         <div class="color-palette" v-for="color in colorNames" :key="color">
           <div class="color-name">{{color}}</div>
@@ -34,7 +36,8 @@
       </div>
     </div>
 
-    <div class="icons-list">
+    <div class="section-title">Icons</div>
+    <div class="card icons-list">
       <svg-clock></svg-clock>
       <svg-close></svg-close>
       <svg-moon></svg-moon>
@@ -48,11 +51,7 @@
 
 <style lang="scss" scoped>
 .home {
-  margin: 10px;
-  border-radius: 3px;
-  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
-  background: var(--fg-0);
-  padding: 10px;
+  margin: 20px;
 }
 
 .color-palette {
@@ -81,7 +80,6 @@
 }
 
 .icons-list {
-  margin-top: 20px;
   display: flex;
   align-items: center;
 

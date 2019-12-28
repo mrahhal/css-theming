@@ -8,14 +8,12 @@ body {
   color: var(--text-color);
 }
 
-a {
-  color: var(--blue);
-}
-
 #app {}
 
 #nav {
-  padding: 30px;
+  padding: 20px;
+  background: var(--fg-0);
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
 
   a {
     opacity: .8;
@@ -27,7 +25,27 @@ a {
   }
 }
 
+.section-title {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.mb {
+  margin-bottom: 20px;
+}
+
+.card {
+  padding: 20px;
+  background: var(--fg-0);
+  border-radius: 3px;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
 .niai-icon {
   fill: currentColor;
   width: 25px;
+}
+
+a {
+  color: var(--blue);
 }
