@@ -1,27 +1,31 @@
 import Vue from 'vue';
-import SvgClock from './svgs/svg-clock.vue';
-import SvgClose from './svgs/svg-close.vue';
-import SvgMoon from './svgs/svg-moon.vue';
-import SvgSun from './svgs/svg-sun.vue';
-import SvgGithub from './svgs/svg-github.vue';
 
-const components = [{
-  name: 'svg-clock',
-  componentConfig: SvgClock,
-}, {
-  name: 'svg-close',
-  componentConfig: SvgClose,
-}, {
-  name: 'svg-moon',
-  componentConfig: SvgMoon,
-}, {
-  name: 'svg-sun',
-  componentConfig: SvgSun,
-}, {
-  name: 'svg-github',
-  componentConfig: SvgGithub,
-}]
+// https://webpack.js.org/guides/dependency-management/#require-context
+const requireComponent = require.context(
+  // Look for files in the current directory
+  '.',
+  // Do not look in subdirectories
+  true,
+  // Include all ts files
+  /[\w-]+\.vue$/,
+);
 
-for (const c of components) {
-  Vue.component(c.name, c.componentConfig.default || c.componentConfig);
-}
+// For each matching file name...
+requireComponent.keys().forEach((fileName) => {
+  // Get the component config
+  const componentConfig = requireComponent(fileName);
+
+  // Get the PascalCase version of the component name
+  let componentName = fileName
+    // Remove the "./" from the beginning
+    .replace(/^\.\//, '')
+    // Remove the file extension from the end
+    .replace(/\.\w+$/, '');
+  const indexOfSlash = componentName.lastIndexOf('/');
+  if (indexOfSlash > -1) {
+    componentName = componentName.substring(indexOfSlash + 1);
+  }
+
+  // Globally register the component
+  Vue.component(componentName, componentConfig.default || componentConfig);
+});
