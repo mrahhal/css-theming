@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <div>Hello</div>
+    <div>{{message}}</div>
 
     <div class="icons-list">
       <svg-clock></svg-clock>
@@ -12,6 +12,8 @@
     </div>
   </div>
 </template>
+
+<script lang="js" src="./Home.js"></script>
 
 <style lang="scss" scoped>
 .home {
