@@ -2,7 +2,12 @@
   <div class="home">
     <div class="section-title">Themes</div>
     <div class="card mb">
-      <div v-for="theme in themes" :key="theme.name">{{theme.name}}: {{theme.brightness}}</div>
+      <div class="theme-list">
+        <div class="theme-item" v-for="theme in themes" :key="theme.name">
+          {{theme.name}}
+          <div class="theme-item-brightness" :class="[theme.brightness]">{{theme.brightness}}</div>
+        </div>
+      </div>
     </div>
 
     <div class="section-title">Palette</div>
@@ -60,6 +65,39 @@
 <style lang="scss" scoped>
 .home {
   margin: 20px;
+}
+
+$theme-list-pad: 20px;
+.theme-list {
+  display: flex;
+  margin-left: -$theme-list-pad;
+  margin-bottom: -$theme-list-pad;
+}
+
+.theme-item {
+  display: flex;
+  align-items: center;
+  margin-left: $theme-list-pad;
+  margin-bottom: $theme-list-pad;
+}
+
+.theme-item-brightness {
+  padding: 3px 6px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  margin-left: 8px;
+
+  &.light {
+    background: var(--green-50);
+    color: var(--green-text);
+    border-color: var(--green);
+  }
+
+  &.dark {
+    background: var(--grey-50);
+    color: var(--grey-text);
+    border-color: var(--grey);
+  }
 }
 
 .color-palette {
