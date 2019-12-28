@@ -1,5 +1,5 @@
 import {
-  getCurrentTheme,
+  getCurrentThemeName,
   initializeTheming,
   setTheme
 } from 'css-theming';
@@ -12,7 +12,7 @@ export default {
       if (e.defaultPrevented) return;
 
       if (e.key === 't') {
-        const previousTheme = getCurrentTheme();
+        const previousTheme = getCurrentThemeName();
         const newTheme = previousTheme == 'default' ? 'default-dark' : 'default';
         setTheme(newTheme);
       }

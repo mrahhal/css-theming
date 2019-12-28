@@ -1,9 +1,11 @@
-import { getThemeNames } from './design-values';
-import { ensureThemeCssName, ensureThemeRawName } from './theme-name-helpers';
+import { getDesignValue, getThemeNames } from './design-values';
+import { Brightness, Theme } from './models';
+import { ensureThemeCssName, ensureThemeRawName } from './helpers';
 
 const htmlElement = document.getElementsByTagName('html')[0];
 
 let previousTheme: string;
+let themes: Theme[];
 
 function validateThemeName(theme: string) {
   for (const t of getThemeNames()) {
@@ -32,6 +34,30 @@ export function setTheme(theme: string) {
   previousTheme = theme;
 }
 
-export function getCurrentTheme() {
+export function getCurrentThemeName() {
   return ensureThemeRawName(previousTheme);
+}
+
+export function getCurrentTheme() {
+  const currentThemeName = getCurrentThemeName();
+  for (const theme of getThemes()) {
+    if (theme.name === currentThemeName) {
+      return theme;
+    }
+  }
+  throw new Error(`Didn't find theme from current theme name.`);
+}
+
+export function getThemes() {
+  if (themes) { return themes; }
+
+  const names = getThemeNames();
+  return themes = names.map(name => {
+    const brightness = getDesignValue(`--ct-theme-${name}-props-brightness`) as Brightness;
+    return {
+      name,
+      cssName: ensureThemeCssName(name),
+      brightness,
+    };
+  });
 }

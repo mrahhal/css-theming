@@ -1,6 +1,3 @@
-import { Brightness, Theme } from './models';
-import { ensureThemeCssName } from './theme-name-helpers';
-
 const style = getComputedStyle(document.body);
 
 export function getDesignValue(prop: string) {
@@ -26,7 +23,6 @@ let fgSwatchNames: string[];
 let colorNames: string[];
 let semanticColorNames: string[];
 let themeNames: string[];
-let themes: Theme[];
 
 export function getSwatchNames() {
   return swatchNames || (swatchNames = getDelimitedValue('--ct-swatch-names')!);
@@ -46,18 +42,4 @@ export function getSemanticColorNames() {
 
 export function getThemeNames() {
   return themeNames || (themeNames = getDelimitedValue('--ct-theme-names')!);
-}
-
-export function getThemes() {
-  if (themes) { return themes; }
-
-  const names = getThemeNames();
-  return themes = names.map(name => {
-    const brightness = getDesignValue(`--ct-theme-${name}-props-brightness`) as Brightness;
-    return {
-      name,
-      cssName: ensureThemeCssName(name),
-      brightness,
-    };
-  });
 }
