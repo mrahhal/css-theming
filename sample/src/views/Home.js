@@ -1,7 +1,13 @@
-import { getThemeNames } from 'css-theming';
+import {
+  getColorNames,
+  getSemanticColorNames,
+  getSwatchNames
+} from 'css-theming';
 
 export default {
   data: () => ({
-    message: getThemeNames().join(', '),
+    colorNames: getColorNames(),
+    swatchNames: getSwatchNames(),
+    semanticColorNames: getSemanticColorNames(),
   }),
 };
