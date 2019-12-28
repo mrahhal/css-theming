@@ -1,6 +1,11 @@
 const path = require('path');
 
 module.exports = {
+  configureWebpack: {
+    resolve: {
+      symlinks: false
+    },
+  },
   css: {
     loaderOptions: {
       sass: {
