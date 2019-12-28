@@ -1,8 +1,9 @@
 import {
   getColorNames,
+  getFgSwatchNames,
   getSemanticColorNames,
   getSwatchNames,
-  getThemes,
+  getThemes
 } from 'css-theming';
 
 export default {
@@ -11,6 +12,7 @@ export default {
       themes: getThemes(),
       colorNames: getColorNames(),
       swatchNames: getSwatchNames(),
+      fgSwatchNames: getFgSwatchNames(),
       semanticColorNames: getSemanticColorNames(),
     });
   },

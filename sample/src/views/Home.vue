@@ -36,6 +36,14 @@
       </div>
     </div>
 
+    <div class="section-title">fgs</div>
+    <div class="card fg-list mb">
+      <div v-for="swatch in fgSwatchNames" :key="swatch">
+        <div>{{swatch}}</div>
+        <fg-block :swatch="swatch"></fg-block>
+      </div>
+    </div>
+
     <div class="section-title">Icons</div>
     <div class="card icons-list">
       <svg-clock></svg-clock>
@@ -65,18 +73,10 @@
   display: flex;
 }
 
-.sample-fg-list {
+.fg-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 20px;
-}
-
-.example-good {
-  background: var(--success-50);
-  color: var(--success-500);
-  padding: 5px 10px;
-  border-radius: 3px;
-  border: 1px solid var(--success-100);
 }
 
 .icons-list {
