@@ -127,3 +127,24 @@ $ct-theme-names: map-keys($ct-themes);
   --text-color: rgb(var(--text-color-raw));
   --text-color-secondary: rgba(var(--text-color-raw), .7);
 }
+
+@mixin ct-themes-loop() {
+  @each $name, $value in $ct-themes {
+    $theme-name: $name !global;
+    $theme: $value !global;
+    $brightness: map-get($theme, 'brightness') !global;
+    @content;
+    $theme-name: null !global;
+    $theme: null !global;
+    $brightness: null !global;
+  }
+}
+
+@mixin ct-themes-apply() {
+  @include ct-themes-loop {
+    .theme-#{$theme-name} body,
+    .ct-theme-preview.theme-#{$theme-name} {
+      @content;
+    }
+  }
+}
