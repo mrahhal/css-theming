@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="section-title">fgs</div>
+    <div class="section-title">Fgs</div>
     <div class="card fg-list mb">
       <div v-for="swatch in fgSwatchNames" :key="swatch">
         <div>{{swatch}}</div>
@@ -84,7 +84,7 @@ $theme-list-pad: 20px;
 .theme-item-brightness {
   padding: 3px 6px;
   border: 1px solid transparent;
-  border-radius: 3px;
+  border-radius: var(--border-radius);
   margin-left: 8px;
 
   &.light {

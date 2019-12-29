@@ -1,0 +1,14 @@
+$ct-themes: (
+  'default': (
+    'brightness': 'light',
+
+    'border-radius': 3px // We're adding our own defined theme prop here that we'll use ourselves
+  ),
+  'default-dark': (
+    'brightness': 'dark',
+
+    'border-radius': 2px
+  ),
+);
+
+@import '../../../src/scss/pure';

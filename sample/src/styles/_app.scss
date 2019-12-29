@@ -1,3 +1,9 @@
+// To add more css variables to our app depending on the active theme, we use ct-themes-apply mixin.
+// Available scss variables inside: $theme, $theme-name, $brightness.
+@include ct-themes-apply {
+  --border-radius: #{map-get($theme, 'border-radius')};
+}
+
 body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7,8 +13,6 @@ body {
   background-color: var(--bg-main);
   color: var(--text-color);
 }
-
-#app {}
 
 #nav {
   padding: 20px;
@@ -37,8 +41,8 @@ body {
 .card {
   padding: 20px;
   background: var(--fg-0);
-  border-radius: 3px;
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
 }
 
 .niai-icon {

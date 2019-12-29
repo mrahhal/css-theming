@@ -10,11 +10,11 @@ module.exports = {
     loaderOptions: {
       sass: {
         sassOptions: {
-          includePaths: [path.resolve(__dirname, './src/scss')],
-          data: `
-            @import 'app';
-          `
-        }
+          includePaths: [path.resolve(__dirname, './src/scss')]
+        },
+        prependData: `
+        @import 'variables';
+        `,
       }
     }
   }
