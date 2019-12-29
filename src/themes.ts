@@ -1,6 +1,6 @@
 import { getDesignValue, getThemeNames } from './design-values';
-import { Brightness, Theme } from './models';
 import { ensureThemeCssName, ensureThemeRawName } from './helpers';
+import { Brightness, Theme } from './models';
 
 const htmlElement = document.getElementsByTagName('html')[0];
 
