@@ -22,10 +22,38 @@ $ct-themes: (
   ),
 ) !default;
 
-$ct-theme-names: map-keys($ct-themes);
+$ct-themes-categories: (
+  '': $ct-themes,
+) !default;
+
+$ct-themes-categories-applied-at: (
+  '': 'body',
+) !default;
+
+@mixin ct-themes-category-register($category, $themes, $applied-at) {
+  @each $theme-name, $theme in $themes {
+    $theme: ct-theme-normalize($category, $theme-name, $theme);
+    $themes: map-merge($themes, ($theme-name: $theme));
+  }
+
+  $ct-themes-categories: map-merge($ct-themes-categories, ($category: $themes)) !global;
+  $ct-themes-categories-applied-at: map-merge($ct-themes-categories-applied-at, ($category: $applied-at)) !global;
+
+  @include ct-compute-theme-css-names();
+}
+
+@function ct-theme-category-css-prefix($category) {
+  @return if($category=='','',#{$category}-);
+}
+
+@function ct-theme-css-name($category, $theme-name) {
+  @return theme-#{ct-theme-category-css-prefix($category)}#{$theme-name};
+}
 
 // Normalize theme data, fill in defaults, and add computed values
-@each $theme-name, $theme in $ct-themes {
+@function ct-theme-normalize($category, $theme-name, $theme) {
+  $theme: map-merge($theme, ('name': $theme-name, 'css-name': ct-theme-css-name($category, $theme-name)));
+
   $brightness: map-get($theme, 'brightness');
 
   // colors
@@ -86,9 +114,7 @@ $ct-theme-names: map-keys($ct-themes);
     $theme: map-merge($theme, ('bd-focus': if($brightness=='light', $ct-bd-focus-light, $ct-bd-focus-dark)));
   }
 
-  // ---
-
-  $ct-themes: map-merge($ct-themes, ($theme-name: $theme));
+  @return $theme;
 }
 
 @function ct-theme-color-get($theme, $color) {
@@ -129,22 +155,51 @@ $ct-theme-names: map-keys($ct-themes);
 }
 
 @mixin ct-themes-loop() {
-  @each $name, $value in $ct-themes {
-    $theme-name: $name !global;
-    $theme: $value !global;
-    $brightness: map-get($theme, 'brightness') !global;
-    @content;
-    $theme-name: null !global;
-    $theme: null !global;
-    $brightness: null !global;
+  @each $category, $themes in $ct-themes-categories {
+    @each $theme-name, $theme in $themes {
+      $category: $category !global;
+      $theme-name: $theme-name !global;
+      $theme-css-name: map-get($theme, 'css-name') !global;
+      $theme: $theme !global;
+      $brightness: map-get($theme, 'brightness') !global;
+      @content;
+      $category: null !global;
+      $theme-name: null !global;
+      $theme-css-name: null !global;
+      $theme: null !global;
+      $brightness: null !global;
+    }
   }
 }
 
 @mixin ct-themes-apply() {
   @include ct-themes-loop {
-    .theme-#{$theme-name} body,
-    .ct-theme-preview.theme-#{$theme-name} {
+    $applied-at: map-get($ct-themes-categories-applied-at, $category);
+    .#{$theme-css-name} #{$applied-at},
+    .ct-theme-preview.#{$theme-css-name} {
       @content;
     }
   }
 }
+
+@each $category, $themes in $ct-themes-categories {
+  @each $theme-name, $theme in $themes {
+    $themes: map-merge($themes, ($theme-name: ct-theme-normalize($category, $theme-name, $theme)));
+  }
+  $ct-themes-categories: map-merge($ct-themes-categories, ($category: $themes));
+}
+
+$ct-theme-css-names: ();
+
+@mixin ct-compute-theme-css-names() {
+  $ct-theme-css-names: () !global;
+
+  @each $category, $themes in $ct-themes-categories {
+    @each $theme-name, $theme in $themes {
+      $theme-css-name: map-get($theme, 'css-name');
+      $ct-theme-css-names: append($ct-theme-css-names, $theme-css-name, comma) !global;
+    }
+  }
+}
+
+@include ct-compute-theme-css-names();

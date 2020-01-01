@@ -22,7 +22,7 @@ let swatchNames: string[];
 let fgSwatchNames: string[];
 let colorNames: string[];
 let semanticColorNames: string[];
-let themeNames: string[];
+let themeCssNames: string[];
 
 export function getSwatchNames() {
   return swatchNames || (swatchNames = getDelimitedValue('--ct-swatch-names')!);
@@ -40,6 +40,6 @@ export function getSemanticColorNames() {
   return semanticColorNames || (semanticColorNames = getDelimitedValue('--ct-semantic-color-names')!);
 }
 
-export function getThemeNames() {
-  return themeNames || (themeNames = getDelimitedValue('--ct-theme-names')!);
+export function getThemeCssNames() {
+  return themeCssNames || (themeCssNames = getDelimitedValue('--ct-theme-css-names')!);
 }

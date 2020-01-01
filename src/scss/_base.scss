@@ -4,10 +4,13 @@
   --ct-fg-swatch-names: #{$ct-fg-swatch-names};
   --ct-color-names: #{$ct-color-names};
   --ct-semantic-color-names: #{$ct-semantic-color-names};
-  --ct-theme-names: #{$ct-theme-names};
+  --ct-theme-css-names: #{$ct-theme-css-names};
 
   @include ct-themes-loop {
-    --ct-theme-#{$theme-name}-props-brightness: #{$brightness};
+    --ct-#{$theme-css-name}-props-category: #{$category};
+    --ct-#{$theme-css-name}-props-name: #{$theme-name};
+    --ct-#{$theme-css-name}-props-css-name: #{$theme-css-name};
+    --ct-#{$theme-css-name}-props-brightness: #{$brightness};
   }
 }
 
@@ -67,4 +70,8 @@
   @include ct-bd-variables($brightness);
 
   --font: #{inspect($font)};
+
+  // ---
+
+  color: var(--text-color);
 }

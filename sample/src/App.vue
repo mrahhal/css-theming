@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div class="navbar">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
+      <button type="button" style="margin-left: 10px" @click="changeNavbarTheme">Change Navbar Theme</button>
     </div>
     <router-view/>
   </div>
