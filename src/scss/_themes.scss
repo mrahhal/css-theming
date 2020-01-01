@@ -189,7 +189,7 @@ $ct-themes-categories-applied-at: (
   $ct-themes-categories: map-merge($ct-themes-categories, ($category: $themes));
 }
 
-$ct-theme-css-names: ();
+$ct-theme-css-names: () !default;
 
 @mixin ct-compute-theme-css-names() {
   $ct-theme-css-names: () !global;
