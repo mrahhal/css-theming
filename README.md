@@ -7,6 +7,10 @@ A platform for CSS theming.
 
 Uses nothing but modern CSS and SCSS. Contrast is at least AA compatible by default!
 
+![niai](images/niai.gif)
+
+<p align="center">from http://niai.mrahhal.net</p>
+
 ## Install
 
 ```
