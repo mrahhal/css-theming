@@ -19,6 +19,10 @@ Uses nothing but modern CSS and SCSS. Contrast is at least AA compatible by defa
 - Support for icons/svgs
 - Programmatic access
 
+<!-- ## Course -->
+
+<!-- Please consider buying the course here. It contains a deep dive into the problems involved with creating themes and making them easy to consume. -->
+
 ## Install
 
 ```
