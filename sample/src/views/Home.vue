@@ -86,17 +86,16 @@ $theme-list-pad: 20px;
   border: 1px solid transparent;
   border-radius: var(--border-radius);
   margin-left: 8px;
+  border-radius: 10px;
 
   &.light {
-    background: var(--green-50);
-    color: var(--green-text);
-    border-color: var(--green);
+    background: var(--indigo-50);
+    color: var(--indigo-text);
   }
 
   &.dark {
     background: var(--grey-50);
     color: var(--grey-text);
-    border-color: var(--grey);
   }
 }
 
