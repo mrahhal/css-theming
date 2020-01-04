@@ -20,7 +20,8 @@
   "author": "Mohammad Rahhal",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "devDependencies": {
     "tslint": "^5.20.1",
