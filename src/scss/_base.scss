@@ -34,12 +34,13 @@
   $mixture: $fg-0;
 
   @each $name in $ct-color-names {
+    $color: ct-theme-color-get($theme, $name);
+    $resolved-mixture: if($name==$fg-target, $mixture-pure, $mixture);
     @each $swatch, $percent in $ct-swatches {
-      $resolved-mixture: if($name==$fg-target, $mixture-pure, $mixture);
-      $color: ct-theme-color-get($theme, $name);
       --#{$name}-#{$swatch}: #{mix($color, $resolved-mixture, $percent)};
     }
-    --#{$name}-text: var(--#{$name}-500);
+    $color-text: if($brightness=='light',darken($color, 20%),lighten($color, 20%));
+    --#{$name}-text: #{$color-text};
   }
 
   @each $name in $ct-semantic-color-names {
