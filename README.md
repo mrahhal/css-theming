@@ -11,6 +11,14 @@ Uses nothing but modern CSS and SCSS. Contrast is at least AA compatible by defa
 
 <p align="center">from http://niai.mrahhal.net</p>
 
+## At a Glance
+
+- Themes and theme categories management
+- Colors and their swatches automatically computed for light/dark themes
+- Foregrounds, backgrounds, borders
+- Support for icons/svgs
+- Programmatic access
+
 ## Install
 
 ```
