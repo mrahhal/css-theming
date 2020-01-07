@@ -19,18 +19,26 @@ function _setCurrentTheme(category: string | null, theme: Theme) {
 
 let themes: Theme[];
 
+function getThemeBrightnessCssName(theme: Theme) {
+  const categoryText = theme.category ? `${theme.category}-` : '';
+  return `theme-${categoryText}brightness-${theme.brightness}`;
+}
+
 export function initializeTheming(theme?: Theme, category: string | null = null) {
   if (!theme) {
     theme = getThemes(category)[0];
   }
   _setCurrentTheme(category, theme);
   htmlElement.classList.add(theme.cssName);
+  htmlElement.classList.add(getThemeBrightnessCssName(theme));
 }
 
 export function setTheme(theme: Theme) {
   const previousTheme = _getCurrentTheme(theme.category);
   htmlElement.classList.remove(previousTheme.cssName);
+  htmlElement.classList.remove(getThemeBrightnessCssName(previousTheme));
   htmlElement.classList.add(theme.cssName);
+  htmlElement.classList.add(getThemeBrightnessCssName(theme));
   _setCurrentTheme(theme.category, theme);
 }
 
