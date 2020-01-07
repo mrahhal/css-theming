@@ -31,9 +31,9 @@ It contains a deep dive into the problems involved with creating themes and thei
 npm i css-theming --save
 ```
 
-## Sample
+## Samples
 
-The main sample app is in the "sample" folder in this repo, written in Vue.
+The "samples" folder contain several samples that show case some of the use cases. They're written in Vue so that we can focus on the theming aspects.
 
 ## Sites Using `css-theming`
 
