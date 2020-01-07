@@ -42,6 +42,8 @@ $ npm i
 $ npm start
 ```
 
+In any sample app, hit "T" on the keyboard anywhere to flip between the 2 main themes and see instant changes.
+
 ## Sites Using `css-theming`
 
 - http://niai.mrahhal.net
