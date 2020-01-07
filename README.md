@@ -19,9 +19,11 @@ Uses modern CSS and SCSS. Color contrast is at least AA compatible by default!
 - Support for icons/svgs
 - Programmatic access
 
-<!-- ## Course -->
+## Course
 
-<!-- Please consider buying the course here. It contains a deep dive into the problems involved with creating themes and making them easy to consume. -->
+Please consider buying the course here: [TODO]
+
+It contains a deep dive into the problems involved with creating themes and their solutions.
 
 ## Install
 
