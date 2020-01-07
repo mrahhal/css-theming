@@ -35,6 +35,13 @@ npm i css-theming --save
 
 The "samples" folder contain several samples that show case some of the use cases. They're written in Vue so that we can focus on the theming aspects.
 
+To run any sample app, run the following inside its folder:
+
+```
+$ npm i
+$ npm start
+```
+
 ## Sites Using `css-theming`
 
 - http://niai.mrahhal.net
