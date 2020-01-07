@@ -14,8 +14,8 @@ $ct-themes: (
 
 @import '../../node_modules/css-theming/src/scss/pure';
 
-// Register a new themes category that we'll use for the navbar
-$ct-navbar-themes: (
+// Register a new themes category that we'll use for the sidebar
+$ct-sidebar-themes: (
   'default': (
     'brightness': 'light',
   ),
@@ -24,4 +24,4 @@ $ct-navbar-themes: (
   )
 );
 
-@include ct-themes-category-register('sidebar', $ct-navbar-themes, $applied-at: '.sidebar');
+@include ct-themes-category-register('sidebar', $ct-sidebar-themes, $applied-at: '.sidebar');
