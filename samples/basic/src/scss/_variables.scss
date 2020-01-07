@@ -13,15 +13,3 @@ $ct-themes: (
 );
 
 @import '../../../../src/scss/pure';
-
-// Register a new themes category that we'll use for the navbar
-$ct-navbar-themes: (
-  'default': (
-    'brightness': 'light',
-  ),
-  'default-dark': (
-    'brightness': 'dark',
-  )
-);
-
-@include ct-themes-category-register('navbar', $ct-navbar-themes, $applied-at: '.navbar');

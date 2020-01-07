@@ -8,7 +8,6 @@ import {
 export default {
   created() {
     initializeTheming();
-    initializeTheming( /* theme */ null, /* category */ 'navbar');
 
     document.addEventListener('keypress', e => {
       if (e.defaultPrevented) return;
@@ -20,12 +19,4 @@ export default {
       }
     });
   },
-
-  methods: {
-    changeNavbarTheme() {
-      const previousTheme = getCurrentTheme('navbar');
-      const newTheme = previousTheme.name == 'default' ? 'default-dark' : 'default';
-      setTheme(getTheme(newTheme, 'navbar'));
-    }
-  }
 }
