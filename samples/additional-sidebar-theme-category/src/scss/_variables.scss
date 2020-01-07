@@ -1,0 +1,27 @@
+// Override the system defined themes
+$ct-themes: (
+  'default': (
+    'brightness': 'light',
+
+    'border-radius': 3px // We're adding our own defined theme prop here that we'll use ourselves
+  ),
+  'default-dark': (
+    'brightness': 'dark',
+
+    'border-radius': 2px
+  ),
+);
+
+@import '../../../../src/scss/pure';
+
+// Register a new themes category that we'll use for the navbar
+$ct-navbar-themes: (
+  'default': (
+    'brightness': 'light',
+  ),
+  'default-dark': (
+    'brightness': 'dark',
+  )
+);
+
+@include ct-themes-category-register('sidebar', $ct-navbar-themes, $applied-at: '.sidebar');
