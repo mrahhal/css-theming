@@ -12,7 +12,7 @@ $ct-themes: (
   ),
 );
 
-@import '../../../src/scss/pure';
+@import '../../../../src/scss/pure';
 
 // Register a new themes category that we'll use for the navbar
 $ct-navbar-themes: (
