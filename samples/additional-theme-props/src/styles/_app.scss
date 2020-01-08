@@ -1,12 +1,9 @@
 // To add more css variables to our app depending on the active theme, we use ct-themes-apply mixin.
 // Available scss variables inside: $theme, $theme-name, $brightness.
 @include ct-themes-apply {
+  // This check isn't needed in case we have only the default theme category
   @if ($category=='') {
     --border-radius: #{map-get($theme, 'border-radius')};
-  }
-
-  @if ($category=='navbar') {
-    // More things you can do here
   }
 }
 
@@ -17,7 +14,6 @@ body {
   margin: 0;
 
   background-color: var(--bg-main);
-  color: var(--text-color);
 }
 
 .navbar {

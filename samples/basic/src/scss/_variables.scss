@@ -1,14 +1,12 @@
 // Override the system defined themes
+// Since we're not adding anything beyond the defaults that css-themign already gives us,
+// we can just completely remove this.
 $ct-themes: (
   'default': (
     'brightness': 'light',
-
-    'border-radius': 3px // We're adding our own defined theme prop here that we'll use ourselves
   ),
   'default-dark': (
     'brightness': 'dark',
-
-    'border-radius': 2px
   ),
 );
 
