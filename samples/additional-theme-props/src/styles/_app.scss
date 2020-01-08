@@ -1,0 +1,61 @@
+// To add more css variables to our app depending on the active theme, we use ct-themes-apply mixin.
+// Available scss variables inside: $theme, $theme-name, $brightness.
+@include ct-themes-apply {
+  @if ($category=='') {
+    --border-radius: #{map-get($theme, 'border-radius')};
+  }
+
+  @if ($category=='navbar') {
+    // More things you can do here
+  }
+}
+
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+
+  background-color: var(--bg-main);
+  color: var(--text-color);
+}
+
+.navbar {
+  padding: 20px;
+  background: var(--fg-0);
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+
+  a {
+    opacity: .8;
+    font-weight: bold;
+
+    &.router-link-exact-active {
+      opacity: 1;
+    }
+  }
+}
+
+.section-title {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.mb {
+  margin-bottom: 20px;
+}
+
+.card {
+  padding: 20px;
+  background: var(--fg-0);
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+}
+
+.niai-icon {
+  fill: currentColor;
+  width: 25px;
+}
+
+a {
+  color: var(--blue);
+}
