@@ -25,7 +25,8 @@
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "images"
   ],
   "devDependencies": {
     "tslint": "^5.20.1",
