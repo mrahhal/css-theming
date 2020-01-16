@@ -19,6 +19,10 @@
   ],
   "author": "Mohammad Rahhal",
   "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/mrahhal/css-theming"
+  },
   "files": [
     "dist",
     "src"
