@@ -28,7 +28,7 @@ It contains a deep dive into the problems involved with creating themes and thei
 ## Install
 
 ```
-npm i css-theming --save
+$ npm i css-theming --save
 ```
 
 ## Samples
