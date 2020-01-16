@@ -1,6 +1,6 @@
 {
   "name": "css-theming",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A platform for CSS theming.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,8 +20,8 @@
   "author": "Mohammad Rahhal",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/mrahhal/css-theming"
+    "type": "git",
+    "url": "https://github.com/mrahhal/css-theming"
   },
   "files": [
     "dist",
