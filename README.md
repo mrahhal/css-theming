@@ -19,6 +19,10 @@ Uses modern CSS and SCSS. Color contrast is at least AA compatible by default!
 - Support for icons/svgs
 - Programmatic access
 
+## Installing & Setup
+
+[Check this document](Setup.md).
+
 ## Course
 
 Please consider buying the course at educative.io here: COMING VERY SOON
