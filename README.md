@@ -7,7 +7,8 @@ A platform for CSS theming.
 
 Uses modern CSS and SCSS. Color contrast is at least AA compatible by default!
 
-![niai](https://raw.githubusercontent.com/mrahhal/css-theming/master/images/niai.gif)
+<!-- ![niai](https://raw.githubusercontent.com/mrahhal/css-theming/master/images/niai.gif) -->
+![niai](images/niai.gif)
 
 <p align="center">from http://niai.mrahhal.net</p>
 
