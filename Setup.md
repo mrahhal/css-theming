@@ -1,4 +1,4 @@
-# Installing
+# Install
 
 css-theming is released as an npm package.
 

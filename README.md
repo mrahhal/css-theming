@@ -19,7 +19,7 @@ Uses modern CSS and SCSS. Color contrast is at least AA compatible by default!
 - Support for icons/svgs
 - Programmatic access
 
-## Installing & Setup
+## Installation & Setup
 
 [Check this document](Setup.md).
 
