@@ -29,12 +29,6 @@ Please consider buying the course at educative.io here: COMING VERY SOON
 
 It contains a deep dive into the problems involved with creating themes and their solutions, and is the backbone behind css-theming.
 
-## Install
-
-```
-$ npm i css-theming --save
-```
-
 ## Samples
 
 The "samples" folder contain several samples that show case some of the use cases. They're written in Vue so that we can focus on the theming aspects.
