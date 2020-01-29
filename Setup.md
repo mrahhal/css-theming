@@ -111,3 +111,7 @@ setTheme('[theme-name]');
 ```
 
 This of course can be in response to a button click for example, that the user clicks on to choose what theme he wants to activate.
+
+---
+
+There's a lot more to customize in css-theming. More documents/courses coming soon.
