@@ -59,4 +59,4 @@ $ct-color-names: map-keys($ct-colors-light);
 $ct-semantic-color-names: map-keys($ct-semantic-colors);
 
 // Contains both color and semantic color names
-$ct-color-names-all: append($ct-color-names, $ct-semantic-color-names);
+$ct-color-names-all: join($ct-color-names, $ct-semantic-color-names);
