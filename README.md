@@ -25,7 +25,7 @@ Uses modern CSS and SCSS. Color contrast is at least AA compatible by default!
 
 ## Course
 
-Please consider buying the course at educative.io here: COMING VERY SOON
+Please consider buying the course at educative.io here: https://www.educative.io/courses/css-theming-for-professionals
 
 It contains a deep dive into the problems involved with creating themes and their solutions, and is the backbone behind css-theming.
 
