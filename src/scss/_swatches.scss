@@ -1,4 +1,3 @@
-@use "sass:map";
 // Swatches get computed for each color.
 // The value represents the mixing percentage of the color with whitish/blackish depending on the theme's brightness.
 
@@ -11,5 +10,3 @@ $swatches: (
   400: 80%,
   500: 100%,
 ) !default;
-
-$swatch-names: map.keys($swatches);

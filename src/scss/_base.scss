@@ -8,13 +8,14 @@
 
 // These will be used to obtain the values programmatically.
 :root {
-  --ct-swatch-names: #{swatches.$swatch-names};
-  --ct-fg-swatch-names: #{fgs.$fg-swatch-names};
-  --ct-color-names: #{colors.$color-names};
-  --ct-semantic-color-names: #{colors.$semantic-color-names};
   --ct-theme-css-names: #{themes.$theme-css-names};
 
   @include themes.themes-loop {
+    --ct-swatch-names: #{map.get(themes.$theme, 'swatch-names')};
+    --ct-fg-swatch-names: #{map.get(themes.$theme, 'fg-swatch-names')};
+    --ct-color-names: #{map.get(themes.$theme, 'color-names')};
+    --ct-semantic-color-names: #{map.get(themes.$theme, 'semantic-color-names')};
+
     --ct-#{themes.$theme-css-name}-props-category: #{themes.$category};
     --ct-#{themes.$theme-css-name}-props-name: #{themes.$theme-name};
     --ct-#{themes.$theme-css-name}-props-css-name: #{themes.$theme-css-name};
@@ -30,6 +31,10 @@
   $bd: map.get(themes.$theme, 'bd');
   $bd-focus: map.get(themes.$theme, 'bd-focus');
 
+  $color-names: map.get(themes.$theme, 'color-names');
+  $semantic-color-names: map.get(themes.$theme, 'semantic-color-names');
+  $swatch-names: map.get(themes.$theme, 'swatch-names');
+
   $font: map.get(themes.$theme, 'font');
   $text-color: map.get(themes.$theme, 'text-color');
 
@@ -42,7 +47,7 @@
 
   $mixture: $fg-0;
 
-  @each $name in colors.$color-names {
+  @each $name in $color-names {
     $color: themes.theme-color-get(themes.$theme, $name);
     $resolved-mixture: if($name==$fg-target, $mixture-pure, $mixture);
     @each $swatch, $percent in $swatches {
@@ -52,19 +57,19 @@
     --#{$name}-text: #{$color-text};
   }
 
-  @each $name in colors.$semantic-color-names {
+  @each $name in $semantic-color-names {
     $target: themes.theme-semantic-color-get(themes.$theme, $name);
-    @each $swatch in swatches.$swatch-names {
+    @each $swatch in $swatch-names {
       --#{$name}-#{$swatch}: var(--#{$target}-#{$swatch});
     }
     --#{$name}-text: var(--#{$target}-text);
   }
 
   // Fill in raw names as having the 500 swatch.
-  @each $name in colors.$color-names {
+  @each $name in $color-names {
     --#{$name}: var(--#{$name}-500);
   }
-  @each $name in colors.$semantic-color-names {
+  @each $name in $semantic-color-names {
     --#{$name}: var(--#{$name}-500);
   }
 

@@ -3,6 +3,7 @@
 @use "bds";
 @use "bgs";
 @use "colors";
+@use "swatches";
 @use "fgs";
 @use "fonts";
 
@@ -59,6 +60,16 @@ $themes-categories-applied-at: (
   @return theme-#{theme-category-css-prefix($category)}#{$theme-name};
 }
 
+@function combine-with-default-map($map, $default-map) {
+  @if ($map==null) { $map: () }
+
+  @if (map.get($map, '$replace')) {
+    @return map.remove($map, '$replace');
+  }
+
+  @return map.merge($default-map, $map);
+}
+
 // Normalize theme data, fill in defaults, and add computed values
 @function theme-normalize($category, $theme-name, $theme) {
   $theme: map.merge($theme, ('name': $theme-name, 'css-name': theme-css-name($category, $theme-name)));
@@ -66,21 +77,13 @@ $themes-categories-applied-at: (
   $brightness: map.get($theme, 'brightness');
 
   // colors
-  $colors: map.get($theme, 'colors');
-  @if ($colors==null) { $colors: () }
   $colors-default: if($brightness=='light', colors.$colors-light, colors.$colors-dark);
-  @each $name in colors.$color-names {
-    @if (map.get($colors, $name)==null) { $colors: map.merge($colors, ($name: map.get($colors-default, $name))) }
-  }
+  $colors: combine-with-default-map(map.get($theme, 'colors'), $colors-default);
   $theme: map.merge($theme, ('colors': $colors));
 
   // semantic-colors
-  $semantic-colors: map.get($theme, 'semantic-colors');
-  @if ($semantic-colors==null) { $semantic-colors: () }
   $semantic-colors-default: colors.$semantic-colors;
-  @each $name in colors.$semantic-color-names {
-    @if (map.get($semantic-colors, $name)==null) { $semantic-colors: map.merge($semantic-colors, ($name: map.get($semantic-colors-default, $name))) }
-  }
+  $semantic-colors: combine-with-default-map(map.get($theme, 'semantic-colors'), $semantic-colors-default);
   $theme: map.merge($theme, ('semantic-colors': $semantic-colors));
 
   // font
@@ -127,6 +130,25 @@ $themes-categories-applied-at: (
   @if (map.get($theme, 'bd-focus')==null) {
     $theme: map.merge($theme, ('bd-focus': if($brightness=='light', bds.$bd-focus-light, bds.$bd-focus-dark)));
   }
+
+  // names
+
+  $color-names: map.keys($colors);
+  $semantic-color-names: map.keys($semantic-colors);
+  // Contains both color and semantic color names
+  $color-names-all: list.join($color-names, $semantic-color-names);
+
+  $swatch-names: map.keys(map.get($theme, 'swatches'));
+
+  $fg-swatch-names: map.keys(map.get($theme, 'fg-swatches'));
+
+  $theme: map.merge($theme, (
+    'color-names': $color-names,
+    'semantic-color-names': $semantic-color-names,
+    'color-names-all': $color-names-all,
+    'swatch-names': $swatch-names,
+    'fg-swatch-names': $fg-swatch-names,
+  ));
 
   @return $theme;
 }

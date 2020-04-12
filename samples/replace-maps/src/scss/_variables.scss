@@ -1,0 +1,34 @@
+// We can inform css-theming that we're completely replacing a map by adding a `'$replace': true` entry to the maps that accept it.
+// This applies to the following maps only: colors, semantic-colors. All other maps are always replaced.
+$ct-themes: (
+  'default': (
+    'brightness': 'light',
+    'colors': (
+      '$replace': true,
+      'red': red,
+      'blue': blue,
+      'green': green,
+    ),
+    'semantic-colors': (
+      '$replace': true,
+      'primary': blue,
+      'success': green,
+    )
+  ),
+  'default-dark': (
+    'brightness': 'dark',
+    'colors': (
+      '$replace': true,
+      'red': red,
+      'blue': blue,
+      'green': green,
+    ),
+    'semantic-colors': (
+      '$replace': true,
+      'primary': blue,
+      'success': green,
+    )
+  ),
+);
+
+@import '../../node_modules/css-theming/src/scss/pure';

@@ -1,4 +1,3 @@
-@use "sass:map";
 // An fg (foreground) is a color that's used as a background for a foreground component (as opposed to the background color of the app).
 
 // The whitish color that'll be used to mix fgs
@@ -20,5 +19,3 @@ $fg-swatches-dark: (
   1: 80%,
   2: 60%,
 ) !default;
-
-$fg-swatch-names: map.keys($fg-swatches-light);

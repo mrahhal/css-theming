@@ -1,5 +1,3 @@
-@use "sass:list";
-@use "sass:map";
 // Colors are the backbone of a theme. A set of color maps are specified for each brightness mode.
 
 // Colors used in light themes
@@ -56,9 +54,3 @@ $text-color-light: 56, 63, 73 !default;
 
 // Main text color used in dark themes
 $text-color-dark: 255, 255, 255 !default;
-
-$color-names: map.keys($colors-light);
-$semantic-color-names: map.keys($semantic-colors);
-
-// Contains both color and semantic color names
-$color-names-all: list.join($color-names, $semantic-color-names);
