@@ -33,6 +33,7 @@
 
   $color-names: map.get(themes.$theme, 'color-names');
   $semantic-color-names: map.get(themes.$theme, 'semantic-color-names');
+  $color-names-all: map.get(themes.$theme, 'color-names-all');
   $swatch-names: map.get(themes.$theme, 'swatch-names');
 
   $font: map.get(themes.$theme, 'font');
@@ -58,26 +59,26 @@
       } @else {
         $result: color.mix($color, $mixture-pure-reverse, 200 - $percent);
       }
-      --#{$name}-#{$swatch}: #{$result};
+      @include colors.set-color-variable-with-rgb(--#{$name}-#{$swatch}, $result);
     }
     $color-text: if(themes.$brightness=='light', color.scale($color, $lightness: -40%), color.scale($color, $lightness: 50%));
-    --#{$name}-text: #{$color-text};
+    @include colors.set-color-variable-with-rgb(--#{$name}-text, $color-text);
   }
 
   @each $name in $semantic-color-names {
     $target: themes.theme-semantic-color-get(themes.$theme, $name);
     @each $swatch in $swatch-names {
-      --#{$name}-#{$swatch}: var(--#{$target}-#{$swatch});
+      @include colors.set-semantic-color-variable-with-rgb($name, $swatch, $target);
     }
-    --#{$name}-text: var(--#{$target}-text);
+    @include colors.set-semantic-color-variable-with-rgb($name, 'text', $target);
   }
 
   // Fill in raw names as having the 500 swatch.
-  @each $name in $color-names {
+  @each $name in $color-names-all {
     --#{$name}: var(--#{$name}-500);
-  }
-  @each $name in $semantic-color-names {
-    --#{$name}: var(--#{$name}-500);
+    @if (colors.$compute-rgb-variables) {
+      --#{$name}-rgb: var(--#{$name}-500-rgb);
+    }
   }
 
   @each $level, $percent in $fg-swatches {

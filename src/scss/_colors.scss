@@ -1,4 +1,7 @@
+@use 'sass:color';
 // Colors are the backbone of a theme. A set of color maps are specified for each brightness mode.
+
+$compute-rgb-variables: false !default;
 
 // Colors used in light themes
 $colors-light: (
@@ -54,3 +57,24 @@ $text-color-light: 56, 63, 73 !default;
 
 // Main text color used in dark themes
 $text-color-dark: 255, 255, 255 !default;
+
+@function get-rgb($color) {
+  $r: color.red($color);
+  $g: color.green($color);
+  $b: color.blue($color);
+  @return $r, $g, $b;
+}
+
+@mixin set-color-variable-with-rgb($key, $color) {
+  #{$key}: #{$color};
+  @if ($compute-rgb-variables) {
+    #{$key}-rgb: #{get-rgb($color)};
+  }
+}
+
+@mixin set-semantic-color-variable-with-rgb($name, $swatch, $target) {
+  --#{$name}-#{$swatch}: var(--#{$target}-#{$swatch});
+  @if ($compute-rgb-variables) {
+    --#{$name}-#{$swatch}-rgb: var(--#{$target}-#{$swatch}-rgb);
+  }
+}
