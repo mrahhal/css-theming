@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "tsc --watch",
-    "build": "tsc -p",
+    "build": "tsc",
     "lint": "tslint src/**/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
