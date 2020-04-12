@@ -1,13 +1,14 @@
 import {
   getCurrentTheme,
-  initializeTheming,
-  setTheme,
-  getTheme
+  ThemeStorage,
 } from 'css-theming';
 
+const themeStorage = new ThemeStorage('css-theming-theme');
+
 export default {
+
   created() {
-    initializeTheming();
+    themeStorage.initializeTheming();
 
     document.addEventListener('keypress', e => {
       if (e.defaultPrevented) return;
@@ -15,7 +16,7 @@ export default {
       if (e.key === 't') {
         const previousTheme = getCurrentTheme();
         const newTheme = previousTheme.name == 'default' ? 'default-dark' : 'default';
-        setTheme(getTheme(newTheme));
+        themeStorage.setThemeName(newTheme);
       }
     });
   },
