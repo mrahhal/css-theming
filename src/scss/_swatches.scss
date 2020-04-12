@@ -1,7 +1,8 @@
+@use "sass:map";
 // Swatches get computed for each color.
 // The value represents the mixing percentage of the color with whitish/blackish depending on the theme's brightness.
 
-$ct-swatches: (
+$swatches: (
   50: 15%,
   75: 30%,
   100: 40%,
@@ -11,4 +12,4 @@ $ct-swatches: (
   500: 100%,
 ) !default;
 
-$ct-swatch-names: map-keys($ct-swatches);
+$swatch-names: map.keys($swatches);

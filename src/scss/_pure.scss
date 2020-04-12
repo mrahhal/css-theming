@@ -1,7 +1,7 @@
-@import 'fonts';
-@import 'colors';
-@import 'swatches';
-@import 'bgs';
-@import 'fgs';
-@import 'bds';
-@import 'themes';
+@forward 'bds';
+@forward 'bgs';
+@forward 'colors';
+@forward 'fgs';
+@forward 'fonts';
+@forward 'swatches';
+@forward 'themes';

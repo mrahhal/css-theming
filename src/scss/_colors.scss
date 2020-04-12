@@ -1,7 +1,9 @@
+@use "sass:list";
+@use "sass:map";
 // Colors are the backbone of a theme. A set of color maps are specified for each brightness mode.
 
 // Colors used in light themes
-$ct-colors-light: (
+$colors-light: (
   'grey': #697C93,
   'brown': #96663C,
   'yellow': #F6D300,
@@ -21,7 +23,7 @@ $ct-colors-light: (
 ) !default;
 
 // Colors used in dark themes
-$ct-colors-dark: (
+$colors-dark: (
   'grey': #697C93,
   'brown': #96663C,
   'yellow': #F8DC33,
@@ -41,7 +43,7 @@ $ct-colors-dark: (
 ) !default;
 
 // Semantic colors to be used for semantic color references instead of a hard coded color
-$ct-semantic-colors: (
+$semantic-colors: (
   'primary': 'purple',
   'success': 'green',
   'info': 'blue',
@@ -50,13 +52,13 @@ $ct-semantic-colors: (
 ) !default;
 
 // Main text color used in light themes
-$ct-text-color-light: 56, 63, 73 !default;
+$text-color-light: 56, 63, 73 !default;
 
 // Main text color used in dark themes
-$ct-text-color-dark: 255, 255, 255 !default;
+$text-color-dark: 255, 255, 255 !default;
 
-$ct-color-names: map-keys($ct-colors-light);
-$ct-semantic-color-names: map-keys($ct-semantic-colors);
+$color-names: map.keys($colors-light);
+$semantic-color-names: map.keys($semantic-colors);
 
 // Contains both color and semantic color names
-$ct-color-names-all: join($ct-color-names, $ct-semantic-color-names);
+$color-names-all: list.join($color-names, $semantic-color-names);

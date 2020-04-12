@@ -1,76 +1,84 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:meta";
+@use "colors";
+@use "fgs";
+@use "swatches";
+@use "themes";
+
 // These will be used to obtain the values programmatically.
 :root {
-  --ct-swatch-names: #{$ct-swatch-names};
-  --ct-fg-swatch-names: #{$ct-fg-swatch-names};
-  --ct-color-names: #{$ct-color-names};
-  --ct-semantic-color-names: #{$ct-semantic-color-names};
-  --ct-theme-css-names: #{$ct-theme-css-names};
+  --ct-swatch-names: #{swatches.$swatch-names};
+  --ct-fg-swatch-names: #{fgs.$fg-swatch-names};
+  --ct-color-names: #{colors.$color-names};
+  --ct-semantic-color-names: #{colors.$semantic-color-names};
+  --ct-theme-css-names: #{themes.$theme-css-names};
 
-  @include ct-themes-loop {
-    --ct-#{$theme-css-name}-props-category: #{$category};
-    --ct-#{$theme-css-name}-props-name: #{$theme-name};
-    --ct-#{$theme-css-name}-props-css-name: #{$theme-css-name};
-    --ct-#{$theme-css-name}-props-brightness: #{$brightness};
+  @include themes.themes-loop {
+    --ct-#{themes.$theme-css-name}-props-category: #{themes.$category};
+    --ct-#{themes.$theme-css-name}-props-name: #{themes.$theme-name};
+    --ct-#{themes.$theme-css-name}-props-css-name: #{themes.$theme-css-name};
+    --ct-#{themes.$theme-css-name}-props-brightness: #{themes.$brightness};
   }
 }
 
-@include ct-themes-apply {
-  $bg-main: map-get($theme, 'bg-main');
-  $fg-target: map-get($theme, 'fg-target');
-  $fg-swatches: map-get($theme, 'fg-swatches');
-  $bd: map-get($theme, 'bd');
-  $bd-focus: map-get($theme, 'bd-focus');
+@include themes.themes-apply {
+  $bg-main: map.get(themes.$theme, 'bg-main');
+  $fg-target: map.get(themes.$theme, 'fg-target');
+  $fg-swatches: map.get(themes.$theme, 'fg-swatches');
+  $bd: map.get(themes.$theme, 'bd');
+  $bd-focus: map.get(themes.$theme, 'bd-focus');
 
-  $font: map-get($theme, 'font');
-  $text-color: map-get($theme, 'text-color');
+  $font: map.get(themes.$theme, 'font');
+  $text-color: map.get(themes.$theme, 'text-color');
 
-  $mixture-pure: if($brightness=='light', white, black);
+  $mixture-pure: if(themes.$brightness=='light', white, black);
 
   // Obtain fg-0 color. Mix it with a pure mixture (white/black) to obtain fg levels.
   // Mix all colors with fg-0 to obtain color levels.
-  $fg-0-percentage: map-get($fg-swatches, 0);
-  $fg-0: mix($fg-target, $mixture-pure, $fg-0-percentage);
+  $fg-0-percentage: map.get($fg-swatches, 0);
+  $fg-0: color.mix($fg-target, $mixture-pure, $fg-0-percentage);
 
   $mixture: $fg-0;
 
-  @each $name in $ct-color-names {
-    $color: ct-theme-color-get($theme, $name);
+  @each $name in colors.$color-names {
+    $color: themes.theme-color-get(themes.$theme, $name);
     $resolved-mixture: if($name==$fg-target, $mixture-pure, $mixture);
-    @each $swatch, $percent in $ct-swatches {
-      --#{$name}-#{$swatch}: #{mix($color, $resolved-mixture, $percent)};
+    @each $swatch, $percent in swatches.$swatches {
+      --#{$name}-#{$swatch}: #{color.mix($color, $resolved-mixture, $percent)};
     }
-    $color-text: if($brightness=='light',darken($color, 20%),lighten($color, 20%));
+    $color-text: if(themes.$brightness=='light',color.adjust($color, $lightness: -20%),color.adjust($color, $lightness: 20%));
     --#{$name}-text: #{$color-text};
   }
 
-  @each $name in $ct-semantic-color-names {
-    $target: ct-theme-semantic-color-get($theme, $name);
-    @each $swatch in $ct-swatch-names {
+  @each $name in colors.$semantic-color-names {
+    $target: themes.theme-semantic-color-get(themes.$theme, $name);
+    @each $swatch in swatches.$swatch-names {
       --#{$name}-#{$swatch}: var(--#{$target}-#{$swatch});
     }
     --#{$name}-text: var(--#{$target}-text);
   }
 
   // Fill in raw names as having the 500 swatch.
-  @each $name in $ct-color-names {
+  @each $name in colors.$color-names {
     --#{$name}: var(--#{$name}-500);
   }
-  @each $name in $ct-semantic-color-names {
+  @each $name in colors.$semantic-color-names {
     --#{$name}: var(--#{$name}-500);
   }
 
   @each $level, $percent in $fg-swatches {
-    --fg-#{$level}: #{mix($fg-target, $mixture-pure, $percent)};
+    --fg-#{$level}: #{color.mix($fg-target, $mixture-pure, $percent)};
   }
 
-  @include ct-text-color-variables($text-color);
+  @include themes.text-color-variables($text-color);
 
   --bg-main: #{$bg-main};
 
-  @include ct-bg-variables($brightness);
-  @include ct-bd-variables($brightness);
+  @include themes.bg-variables(themes.$brightness);
+  @include themes.bd-variables(themes.$brightness);
 
-  --font: #{inspect($font)};
+  --font: #{meta.inspect($font)};
 
   // ---
 

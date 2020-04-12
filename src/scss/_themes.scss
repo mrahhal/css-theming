@@ -1,167 +1,175 @@
-// Themes define the system defined themes of the app.
+@use "sass:list";
+@use "sass:map";
+@use "bds";
+@use "bgs";
+@use "colors";
+@use "fgs";
+@use "fonts";
+
+// $themes define the system defined themes of the app.
 // The only required property on the theme is `brightness`. Everything else will fallback to default values if not specified.
 
 // This defines a map from a theme's name to another map that customizes the theme's props
-$ct-themes: (
+$themes: (
   'default': (
     'brightness': 'light',
-    // 'colors': overrides $ct-colors-[light|dark]
-    // 'semantic-colors': overrides $ct-semantic-colors
-    // 'font': overrides $ct-font
-    // 'text-color': overrides $ct-text-color-[light|dark]
-    // 'bg-main': overrides $ct-bg-main-[light|dark]
-    // 'fg-target': overrides $ct-fg-target-[light|dark]
-    // 'fg-swatches': overrides $ct-fg-swatches-[light|dark]
-    // 'bg': overrides $ct-bg-[light|dark]
-    // 'bg-focus': overrides $ct-bg-focus-[light|dark]
-    // 'bd': overrides $ct-bd-[light|dark]
-    // 'bd-focus': overrides $ct-bd-focus-[light|dark]
+    // 'colors': overrides $colors-[light|dark]
+    // 'semantic-colors': overrides $semantic-colors
+    // 'font': overrides $font
+    // 'text-color': overrides $text-color-[light|dark]
+    // 'bg-main': overrides $bg-main-[light|dark]
+    // 'fg-target': overrides $fg-target-[light|dark]
+    // 'fg-swatches': overrides $fg-swatches-[light|dark]
+    // 'bg': overrides $bg-[light|dark]
+    // 'bg-focus': overrides $bg-focus-[light|dark]
+    // 'bd': overrides $bd-[light|dark]
+    // 'bd-focus': overrides $bd-focus-[light|dark]
   ),
   'default-dark': (
     'brightness': 'dark',
   ),
 ) !default;
 
-$ct-themes-categories: (
-  '': $ct-themes,
+$themes-categories: (
+  '': $themes,
 ) !default;
 
-$ct-themes-categories-applied-at: (
+$themes-categories-applied-at: (
   '': 'body',
 ) !default;
 
-@mixin ct-themes-category-register($category, $themes, $applied-at) {
+@mixin themes-category-register($category, $themes, $applied-at) {
   @each $theme-name, $theme in $themes {
-    $theme: ct-theme-normalize($category, $theme-name, $theme);
-    $themes: map-merge($themes, ($theme-name: $theme));
+    $theme: theme-normalize($category, $theme-name, $theme);
+    $themes: map.merge($themes, ($theme-name: $theme));
   }
 
-  $ct-themes-categories: map-merge($ct-themes-categories, ($category: $themes)) !global;
-  $ct-themes-categories-applied-at: map-merge($ct-themes-categories-applied-at, ($category: $applied-at)) !global;
+  $themes-categories: map.merge($themes-categories, ($category: $themes)) !global;
+  $themes-categories-applied-at: map.merge($themes-categories-applied-at, ($category: $applied-at)) !global;
 
-  @include ct-compute-theme-css-names();
+  @include compute-theme-css-names();
 }
 
-@function ct-theme-category-css-prefix($category) {
+@function theme-category-css-prefix($category) {
   @return if($category=='','',#{$category}-);
 }
 
-@function ct-theme-css-name($category, $theme-name) {
-  @return theme-#{ct-theme-category-css-prefix($category)}#{$theme-name};
+@function theme-css-name($category, $theme-name) {
+  @return theme-#{theme-category-css-prefix($category)}#{$theme-name};
 }
 
 // Normalize theme data, fill in defaults, and add computed values
-@function ct-theme-normalize($category, $theme-name, $theme) {
-  $theme: map-merge($theme, ('name': $theme-name, 'css-name': ct-theme-css-name($category, $theme-name)));
+@function theme-normalize($category, $theme-name, $theme) {
+  $theme: map.merge($theme, ('name': $theme-name, 'css-name': theme-css-name($category, $theme-name)));
 
-  $brightness: map-get($theme, 'brightness');
+  $brightness: map.get($theme, 'brightness');
 
   // colors
-  $colors: map-get($theme, 'colors');
+  $colors: map.get($theme, 'colors');
   @if ($colors==null) { $colors: () }
-  $colors-default: if($brightness=='light', $ct-colors-light, $ct-colors-dark);
-  @each $name in $ct-color-names {
-    @if (map-get($colors, $name)==null) { $colors: map-merge($colors, ($name: map-get($colors-default, $name))) }
+  $colors-default: if($brightness=='light', colors.$colors-light, colors.$colors-dark);
+  @each $name in colors.$color-names {
+    @if (map.get($colors, $name)==null) { $colors: map.merge($colors, ($name: map.get($colors-default, $name))) }
   }
-  $theme: map-merge($theme, ('colors': $colors));
+  $theme: map.merge($theme, ('colors': $colors));
 
   // semantic-colors
-  $semantic-colors: map-get($theme, 'semantic-colors');
+  $semantic-colors: map.get($theme, 'semantic-colors');
   @if ($semantic-colors==null) { $semantic-colors: () }
-  $semantic-colors-default: $ct-semantic-colors;
-  @each $name in $ct-semantic-color-names {
-    @if (map-get($semantic-colors, $name)==null) { $semantic-colors: map-merge($semantic-colors, ($name: map-get($semantic-colors-default, $name))) }
+  $semantic-colors-default: colors.$semantic-colors;
+  @each $name in colors.$semantic-color-names {
+    @if (map.get($semantic-colors, $name)==null) { $semantic-colors: map.merge($semantic-colors, ($name: map.get($semantic-colors-default, $name))) }
   }
-  $theme: map-merge($theme, ('semantic-colors': $semantic-colors));
+  $theme: map.merge($theme, ('semantic-colors': $semantic-colors));
 
   // font
-  @if (map-get($theme, 'font')==null) { $theme: map-merge($theme, (font: $ct-font)) }
+  @if (map.get($theme, 'font')==null) { $theme: map.merge($theme, (font: fonts.$font)) }
 
   // text-color
-  $text-color: if($brightness=='light', $ct-text-color-light, $ct-text-color-dark);
-  $theme: map-merge($theme, ('text-color': $text-color));
+  $text-color: if($brightness=='light', colors.$text-color-light, colors.$text-color-dark);
+  $theme: map.merge($theme, ('text-color': $text-color));
 
   // bg-main
-  $bg-main: if($brightness=='light', $ct-bg-main-light, $ct-bg-main-dark);
-  @if (map-get($theme, 'bg-main')==null) {
-    $theme: map-merge($theme, ('bg-main': $bg-main));
+  $bg-main: if($brightness=='light', bgs.$bg-main-light, bgs.$bg-main-dark);
+  @if (map.get($theme, 'bg-main')==null) {
+    $theme: map.merge($theme, ('bg-main': $bg-main));
   }
 
   // fg-target
-  $fg-target: if($brightness=='light', $ct-fg-target-light, $ct-fg-target-dark);
-  @if (map-get($theme, 'fg-target')==null) {
-    $theme: map-merge($theme, ('fg-target': $fg-target));
+  $fg-target: if($brightness=='light', fgs.$fg-target-light, fgs.$fg-target-dark);
+  @if (map.get($theme, 'fg-target')==null) {
+    $theme: map.merge($theme, ('fg-target': $fg-target));
   }
 
   // fg-swatches
-  @if (map-get($theme, 'fg-swatches')==null) {
-    $theme: map-merge($theme, ('fg-swatches': if($brightness=='light', $ct-fg-swatches-light, $ct-fg-swatches-dark)));
+  @if (map.get($theme, 'fg-swatches')==null) {
+    $theme: map.merge($theme, ('fg-swatches': if($brightness=='light', fgs.$fg-swatches-light, fgs.$fg-swatches-dark)));
   }
 
   // bg
-  @if (map-get($theme, 'bg')==null) {
-    $theme: map-merge($theme, ('bg': if($brightness=='light', $ct-bg-light, $ct-bg-dark)));
+  @if (map.get($theme, 'bg')==null) {
+    $theme: map.merge($theme, ('bg': if($brightness=='light', bgs.$bg-light, bgs.$bg-dark)));
   }
-  @if (map-get($theme, 'bg-focus')==null) {
-    $theme: map-merge($theme, ('bg-focus': if($brightness=='light', $ct-bg-focus-light, $ct-bg-focus-dark)));
+  @if (map.get($theme, 'bg-focus')==null) {
+    $theme: map.merge($theme, ('bg-focus': if($brightness=='light', bgs.$bg-focus-light, bgs.$bg-focus-dark)));
   }
 
   // bd
-  @if (map-get($theme, 'bd')==null) {
-    $theme: map-merge($theme, ('bd': if($brightness=='light', $ct-bd-light, $ct-bd-dark)));
+  @if (map.get($theme, 'bd')==null) {
+    $theme: map.merge($theme, ('bd': if($brightness=='light', bds.$bd-light, bds.$bd-dark)));
   }
-  @if (map-get($theme, 'bd-focus')==null) {
-    $theme: map-merge($theme, ('bd-focus': if($brightness=='light', $ct-bd-focus-light, $ct-bd-focus-dark)));
+  @if (map.get($theme, 'bd-focus')==null) {
+    $theme: map.merge($theme, ('bd-focus': if($brightness=='light', bds.$bd-focus-light, bds.$bd-focus-dark)));
   }
 
   @return $theme;
 }
 
-@function ct-theme-color-get($theme, $color) {
-  $colors: map-get($theme, 'colors');
-  @return map-get($colors, $color);
+@function theme-color-get($theme, $color) {
+  $colors: map.get($theme, 'colors');
+  @return map.get($colors, $color);
 }
 
-@function ct-theme-semantic-color-get($theme, $color) {
-  $semantic-colors: map-get($theme, 'semantic-colors');
-  @return map-get($semantic-colors, $color);
+@function theme-semantic-color-get($theme, $color) {
+  $semantic-colors: map.get($theme, 'semantic-colors');
+  @return map.get($semantic-colors, $color);
 }
 
-@function ct-theme-semantic-color-resolved-get($theme, $color) {
-  $target: ct-theme-semantic-color-get($theme, $color);
+@function theme-semantic-color-resolved-get($theme, $color) {
+  $target: theme-semantic-color-get($theme, $color);
   @return theme-color-get($theme, $target);
 }
 
-@mixin ct-bg-variables($brightness) {
-  $bg: if($brightness=='light', $ct-bg-light, $ct-bg-dark);
-  $bg-focus: if($brightness=='light', $ct-bg-focus-light, $ct-bg-focus-dark);
+@mixin bg-variables($brightness) {
+  $bg: if($brightness=='light', bgs.$bg-light, bgs.$bg-dark);
+  $bg-focus: if($brightness=='light', bgs.$bg-focus-light, bgs.$bg-focus-dark);
 
   --bg: #{$bg};
   --bg-focus: #{$bg-focus};
 }
 
-@mixin ct-bd-variables($brightness) {
-  $bd: if($brightness=='light', $ct-bd-light, $ct-bd-dark);
-  $bd-focus: if($brightness=='light', $ct-bd-focus-light, $ct-bd-focus-dark);
+@mixin bd-variables($brightness) {
+  $bd: if($brightness=='light', bds.$bd-light, bds.$bd-dark);
+  $bd-focus: if($brightness=='light', bds.$bd-focus-light, bds.$bd-focus-dark);
 
   --bd: #{$bd};
   --bd-focus: #{$bd-focus};
 }
 
-@mixin ct-text-color-variables($text-color) {
+@mixin text-color-variables($text-color) {
   --text-color-raw: #{$text-color};
   --text-color: rgb(var(--text-color-raw));
   --text-color-secondary: rgba(var(--text-color-raw), .7);
 }
 
-@mixin ct-themes-loop() {
-  @each $category, $themes in $ct-themes-categories {
+@mixin themes-loop() {
+  @each $category, $themes in $themes-categories {
     @each $theme-name, $theme in $themes {
       $category: $category !global;
       $theme-name: $theme-name !global;
-      $theme-css-name: map-get($theme, 'css-name') !global;
+      $theme-css-name: map.get($theme, 'css-name') !global;
       $theme: $theme !global;
-      $brightness: map-get($theme, 'brightness') !global;
+      $brightness: map.get($theme, 'brightness') !global;
       @content;
       $category: null !global;
       $theme-name: null !global;
@@ -172,9 +180,9 @@ $ct-themes-categories-applied-at: (
   }
 }
 
-@mixin ct-themes-apply() {
-  @include ct-themes-loop {
-    $applied-at: map-get($ct-themes-categories-applied-at, $category);
+@mixin themes-apply() {
+  @include themes-loop {
+    $applied-at: map.get($themes-categories-applied-at, $category);
     .#{$theme-css-name} #{$applied-at},
     .ct-theme-preview.#{$theme-css-name} {
       @content;
@@ -182,24 +190,24 @@ $ct-themes-categories-applied-at: (
   }
 }
 
-@each $category, $themes in $ct-themes-categories {
+@each $category, $themes in $themes-categories {
   @each $theme-name, $theme in $themes {
-    $themes: map-merge($themes, ($theme-name: ct-theme-normalize($category, $theme-name, $theme)));
+    $themes: map.merge($themes, ($theme-name: theme-normalize($category, $theme-name, $theme)));
   }
-  $ct-themes-categories: map-merge($ct-themes-categories, ($category: $themes));
+  $themes-categories: map.merge($themes-categories, ($category: $themes));
 }
 
-$ct-theme-css-names: () !default;
+$theme-css-names: () !default;
 
-@mixin ct-compute-theme-css-names() {
-  $ct-theme-css-names: () !global;
+@mixin compute-theme-css-names() {
+  $theme-css-names: () !global;
 
-  @each $category, $themes in $ct-themes-categories {
+  @each $category, $themes in $themes-categories {
     @each $theme-name, $theme in $themes {
-      $theme-css-name: map-get($theme, 'css-name');
-      $ct-theme-css-names: append($ct-theme-css-names, $theme-css-name, comma) !global;
+      $theme-css-name: map.get($theme, 'css-name');
+      $theme-css-names: list.append($theme-css-names, $theme-css-name, comma) !global;
     }
   }
 }
 
-@include ct-compute-theme-css-names();
+@include compute-theme-css-names();

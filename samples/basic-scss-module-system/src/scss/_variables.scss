@@ -1,0 +1,13 @@
+@use '../../node_modules/css-theming/src/scss/pure' with (
+  // Override the system defined themes
+  // Since we're not adding anything beyond the defaults that css-theming already gives us,
+  // we can just completely remove this section.
+  $themes: (
+    'default': (
+      'brightness': 'light',
+    ),
+    'default-dark': (
+      'brightness': 'dark',
+    ),
+  ),
+);
