@@ -1,11 +1,11 @@
-@use "sass:list";
-@use "sass:map";
-@use "bds";
-@use "bgs";
-@use "colors";
-@use "swatches";
-@use "fgs";
-@use "fonts";
+@use 'sass:list';
+@use 'sass:map';
+@use 'bds';
+@use 'bgs';
+@use 'colors';
+@use 'swatches';
+@use 'fgs';
+@use 'fonts';
 
 // $themes define the system defined themes of the app.
 // The only required property on the theme is `brightness`. Everything else will fallback to default values if not specified.
