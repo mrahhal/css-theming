@@ -47,7 +47,7 @@
     @each $swatch, $percent in swatches.$swatches {
       --#{$name}-#{$swatch}: #{color.mix($color, $resolved-mixture, $percent)};
     }
-    $color-text: if(themes.$brightness=='light',color.adjust($color, $lightness: -20%),color.adjust($color, $lightness: 20%));
+    $color-text: if(themes.$brightness=='light', color.adjust($color, $lightness: -20%), color.adjust($color, $lightness: 20%));
     --#{$name}-text: #{$color-text};
   }
 
