@@ -11,15 +11,19 @@
   --ct-theme-css-names: #{themes.$theme-css-names};
 
   @include themes.themes-loop {
-    --ct-swatch-names: #{map.get(themes.$theme, 'swatch-names')};
-    --ct-fg-swatch-names: #{map.get(themes.$theme, 'fg-swatch-names')};
-    --ct-color-names: #{map.get(themes.$theme, 'color-names')};
-    --ct-semantic-color-names: #{map.get(themes.$theme, 'semantic-color-names')};
-
     --ct-#{themes.$theme-css-name}-props-category: #{themes.$category};
     --ct-#{themes.$theme-css-name}-props-name: #{themes.$theme-name};
     --ct-#{themes.$theme-css-name}-props-css-name: #{themes.$theme-css-name};
     --ct-#{themes.$theme-css-name}-props-brightness: #{themes.$brightness};
+  }
+}
+
+@include themes.themes-loop {
+  .#{themes.$theme-css-name} body {
+    --ct-swatch-names: #{map.get(themes.$theme, 'swatch-names')};
+    --ct-fg-swatch-names: #{map.get(themes.$theme, 'fg-swatch-names')};
+    --ct-color-names: #{map.get(themes.$theme, 'color-names')};
+    --ct-semantic-color-names: #{map.get(themes.$theme, 'semantic-color-names')};
   }
 }
 
