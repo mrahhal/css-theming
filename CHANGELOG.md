@@ -6,6 +6,7 @@
 - Use scale instead of lighten/darken ([#2](https://github.com/mrahhal/css-theming/issues/2))
 - Add "replace" option when customizing color maps ([#7](https://github.com/mrahhal/css-theming/issues/7))
 - Provide rgb variables for colors ([#8](https://github.com/mrahhal/css-theming/issues/8))
+- Allow percentages from 100% to 200% for color swatches ([#10](https://github.com/mrahhal/css-theming/issues/10))
 
 ## 1.0.0
 
