@@ -24,6 +24,7 @@
 
 @include themes.themes-apply {
   $bg-main: map.get(themes.$theme, 'bg-main');
+  $swatches: map.get(themes.$theme, 'swatches');
   $fg-target: map.get(themes.$theme, 'fg-target');
   $fg-swatches: map.get(themes.$theme, 'fg-swatches');
   $bd: map.get(themes.$theme, 'bd');
@@ -44,7 +45,7 @@
   @each $name in colors.$color-names {
     $color: themes.theme-color-get(themes.$theme, $name);
     $resolved-mixture: if($name==$fg-target, $mixture-pure, $mixture);
-    @each $swatch, $percent in swatches.$swatches {
+    @each $swatch, $percent in $swatches {
       --#{$name}-#{$swatch}: #{color.mix($color, $resolved-mixture, $percent)};
     }
     $color-text: if(themes.$brightness=='light', color.scale($color, $lightness: -40%), color.scale($color, $lightness: 50%));
