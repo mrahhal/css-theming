@@ -39,6 +39,7 @@
   $text-color: map.get(themes.$theme, 'text-color');
 
   $mixture-pure: if(themes.$brightness=='light', white, black);
+  $mixture-pure-reverse: if(themes.$brightness=='light', black, white);
 
   // Obtain fg-0 color. Mix it with a pure mixture (white/black) to obtain fg levels.
   // Mix all colors with fg-0 to obtain color levels.
@@ -51,7 +52,13 @@
     $color: themes.theme-color-get(themes.$theme, $name);
     $resolved-mixture: if($name==$fg-target, $mixture-pure, $mixture);
     @each $swatch, $percent in $swatches {
-      --#{$name}-#{$swatch}: #{color.mix($color, $resolved-mixture, $percent)};
+      $result: null;
+      @if ($percent <= 100) {
+        $result: color.mix($color, $resolved-mixture, $percent);
+      } @else {
+        $result: color.mix($color, $mixture-pure-reverse, 200 - $percent);
+      }
+      --#{$name}-#{$swatch}: #{$result};
     }
     $color-text: if(themes.$brightness=='light', color.scale($color, $lightness: -40%), color.scale($color, $lightness: 50%));
     --#{$name}-text: #{$color-text};
