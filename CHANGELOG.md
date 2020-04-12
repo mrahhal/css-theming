@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 1.1.1
+
+- Fix theme related names variables
+
 ## 1.1.0
 
 - css-theming now uses the new [sass module system](https://sass-lang.com/blog/the-module-system-is-launched) internally. Consuming libraries are unaffected as long as you use dart-sass >= 1.23. If your app also uses the new module system, check basic-scss-module-system sample. ([#4](https://github.com/mrahhal/css-theming/issues/4))
