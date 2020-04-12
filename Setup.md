@@ -8,7 +8,7 @@ css-theming is released as an npm package.
 $ npm i css-theming --save
 ```
 
-There are both javascript modules (typescript type definitions available) and SCSS src files after you install the package.
+There are both javascript modules (typescript type definitions available) and SCSS src files after you install the package. Make sure you're using dart-sass >= 1.23 in your app.
 
 You use the javascript modules the usual way:
 
