@@ -5,6 +5,9 @@
 @use 'fgs';
 @use 'swatches';
 @use 'themes';
+@use 'module-variables';
+
+@use 'modules/inputs' as module-inputs;
 
 // These will be used to obtain the values programmatically.
 :root {
@@ -29,6 +32,7 @@
 
 @include themes.themes-apply {
   $bg-main: map.get(themes.$theme, 'bg-main');
+  $bg-input: map.get(themes.$theme, 'bg-input');
   $swatches: map.get(themes.$theme, 'swatches');
   $fg-target: map.get(themes.$theme, 'fg-target');
   $fg-swatches: map.get(themes.$theme, 'fg-swatches');
@@ -92,6 +96,7 @@
   @include themes.text-color-variables($text-color);
 
   --bg-main: #{$bg-main};
+  --bg-input: #{$bg-input};
 
   @include themes.bg-variables(themes.$brightness);
   @include themes.bd-variables(themes.$brightness);
@@ -101,4 +106,8 @@
   // ---
 
   color: var(--text-color);
+}
+
+@if(module-variables.$enable-module-inputs) {
+  @include module-inputs.apply();
 }

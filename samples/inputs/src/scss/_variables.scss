@@ -1,0 +1,18 @@
+// Override the system defined themes
+// Since we're not adding anything beyond the defaults that css-theming already gives us,
+// we can just completely remove this.
+$ct-themes: (
+  'default': (
+    'brightness': 'light',
+  ),
+  'default-dark': (
+    'brightness': 'dark',
+  ),
+);
+
+$ct-compute-rgb-variables: true; // Remove this if you don't need to use rgb color variables. (Useful when you want to use rgba with the colors)
+
+// Uncomment this if you don't want inputs to be touched.
+// $ct-enable-module-inputs: false;
+
+@import '../../node_modules/css-theming/src/scss/pure';

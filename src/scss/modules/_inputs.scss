@@ -1,0 +1,12 @@
+@mixin apply() {
+  input,
+  textarea,
+  select {
+    background: var(--bg-input);
+    color: var(--text-color);
+
+    &::placeholder {
+      color: var(--text-color-secondary);
+    }
+  }
+}

@@ -19,6 +19,7 @@ $themes: (
     // 'font': overrides $font
     // 'text-color': overrides $text-color-[light|dark]
     // 'bg-main': overrides $bg-main-[light|dark]
+    // 'bg-input': overrides $bg-input-[light|dark]
     // 'swatches': overrides $swatches
     // 'fg-target': overrides $fg-target-[light|dark]
     // 'fg-swatches': overrides $fg-swatches-[light|dark]
@@ -97,6 +98,12 @@ $themes-categories-applied-at: (
   $bg-main: if($brightness=='light', bgs.$bg-main-light, bgs.$bg-main-dark);
   @if (map.get($theme, 'bg-main')==null) {
     $theme: map.merge($theme, ('bg-main': $bg-main));
+  }
+
+  // bg-input
+  $bg-input: if($brightness=='light', bgs.$bg-input-light, bgs.$bg-input-dark);
+  @if (map.get($theme, 'bg-input')==null) {
+    $theme: map.merge($theme, ('bg-input': $bg-input));
   }
 
   // fg-target

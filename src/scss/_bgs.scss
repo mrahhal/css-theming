@@ -4,6 +4,14 @@ $bg-main-light: #F1F1F1 !default;
 // Main bg used in dark themes
 $bg-main-dark: #36393F !default;
 
+// Inputs are things like text inputs, selects, and any kind of input like component (except for buttons).
+
+// Input bg used in light themes
+$bg-input-light: #FFF;
+
+// Input bg used in dark themes
+$bg-input-dark: #101316;
+
 $bg-light: rgba(0, 0, 0, 0.05) !default;
 $bg-dark: rgba(255, 255, 255, 0.05) !default;
 $bg-focus-light: rgba(0, 0, 0, 0.1) !default;
