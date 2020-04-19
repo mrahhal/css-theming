@@ -14,6 +14,7 @@ Uses modern CSS and SCSS. Color contrast is at least AA compatible by default!
 ## At a Glance
 
 - Themes and theme category management
+- Auto detects user's system preference and activates the appropriate theme
 - Colors and their swatches automatically computed for light/dark themes
 - Auto computation of rgb variables for colors (provided as css variables for ease of use)
 - Foregrounds, backgrounds, borders
