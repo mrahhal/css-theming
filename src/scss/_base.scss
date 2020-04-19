@@ -7,6 +7,7 @@
 @use 'themes';
 @use 'module-variables';
 
+@use 'modules/general' as module-general;
 @use 'modules/inputs' as module-inputs;
 
 // These will be used to obtain the values programmatically.
@@ -102,10 +103,10 @@
   @include themes.bd-variables(themes.$brightness);
 
   --font: #{meta.inspect($font)};
+}
 
-  // ---
-
-  color: var(--text-color);
+@if (module-variables.$enable-module-general) {
+  @include module-general.apply();
 }
 
 @if(module-variables.$enable-module-inputs) {

@@ -1,0 +1,9 @@
+@use '../themes';
+
+@mixin apply() {
+  @include themes.themes-apply {
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    font-family: var(--font);
+  }
+}
