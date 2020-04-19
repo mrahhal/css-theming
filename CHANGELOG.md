@@ -1,10 +1,10 @@
 # Changelog
 
-## Unreleased
+## 1.2.0
 
 - Fix default font variable problem ([#11](https://github.com/mrahhal/css-theming/issues/11))
 - Added a `--bg-input` variable, applied by default to various inputs ([#3](https://github.com/mrahhal/css-theming/issues/3))
-- In the default storage, select default theme in response to preferred system theme ([#6](https://github.com/mrahhal/css-theming/issues/6))
+- Select default theme in response to preferred system theme when using storage ([#6](https://github.com/mrahhal/css-theming/issues/6))
 
 ## 1.1.1
 
