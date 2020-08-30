@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+- Produce both umd and es modules.
+
 ## 1.2.0
 
 - Fix default font variable problem ([#11](https://github.com/mrahhal/css-theming/issues/11))
