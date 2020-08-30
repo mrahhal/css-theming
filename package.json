@@ -2,11 +2,12 @@
   "name": "css-theming",
   "version": "1.2.0",
   "description": "A platform for CSS theming.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/umd/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
   "scripts": {
-    "start": "tsc --watch",
-    "build": "tsc",
+    "start": "rollup -c rollup.config.es.js -w",
+    "build": "rollup -c rollup.config.es.js && rollup -c rollup.config.umd.js",
     "lint": "tslint src/**/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,6 +29,8 @@
     "src"
   ],
   "devDependencies": {
+    "@rollup/plugin-typescript": "^5.0.2",
+    "tslib": "^2.0.1",
     "tslint": "^5.20.1",
     "typescript": "^3.7.4"
   }

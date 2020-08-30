@@ -31,6 +31,13 @@ Please consider buying the course at educative.io here: https://www.educative.io
 
 It contains a deep dive into the problems involved with creating themes and their solutions, and is the backbone behind css-theming.
 
+## Development
+
+```
+npm i -g rollup
+npm i
+```
+
 ## Samples
 
 The "samples" folder contain several samples that show case some of the use cases. They're written in Vue so that we can focus on the theming aspects.
@@ -38,8 +45,8 @@ The "samples" folder contain several samples that show case some of the use case
 To run any sample app, run the following inside its folder:
 
 ```
-$ npm i
-$ npm start
+npm i
+npm start
 ```
 
 In any sample app, hit "T" on the keyboard anywhere to flip between the 2 main themes and see instant changes.

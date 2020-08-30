@@ -1,12 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "declaration": true,
+    "target": "es2015",
+    "module": "esnext",
     "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "dist"
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "src/**/*"
