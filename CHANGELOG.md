@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Font is now unquoted properly. Wrap your font values (in `ct-font` or the `font` prop on a theme) with quotes, just like a normal string.
+
 ## 1.3.0
 
 - Produce both umd and es modules.
