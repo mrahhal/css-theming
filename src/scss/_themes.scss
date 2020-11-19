@@ -197,9 +197,10 @@ $themes-categories-applied-at: (
 }
 
 @mixin text-color-variables($text-color) {
-  --text-color-raw: #{$text-color};
-  --text-color: rgb(var(--text-color-raw));
-  --text-color-secondary: rgba(var(--text-color-raw), .7);
+  --text-color-raw: #{$text-color}; // To be removed
+  --text-color-rgb: #{$text-color};
+  --text-color: rgb(var(--text-color-rgb));
+  --text-color-secondary: rgba(var(--text-color-rgb), .7);
 }
 
 @mixin themes-loop() {

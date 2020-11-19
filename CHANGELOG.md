@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- `--text-color-rgb` added instead of `--text-color-raw`. `--text-color-raw` is deprecated.
 - Font is now unquoted properly. Wrap your font values (in `ct-font` or the `font` prop on a theme) with quotes, just like a normal string.
 
 ## 1.3.0
