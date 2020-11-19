@@ -1,6 +1,7 @@
 @use 'sass:color';
 @use 'sass:map';
 @use 'sass:meta';
+@use 'sass:string';
 @use 'colors';
 @use 'fgs';
 @use 'swatches';
@@ -102,7 +103,7 @@
   @include themes.bg-variables(themes.$brightness);
   @include themes.bd-variables(themes.$brightness);
 
-  --font: #{meta.inspect($font)};
+  --font: #{string.unquote($font)};
 }
 
 @if (module-variables.$enable-module-general) {
