@@ -12,8 +12,8 @@
 
 // This defines a map from a theme's name to another map that customizes the theme's props
 $themes: (
-  'default': (
-    'brightness': 'light',
+  'default':
+  (
     // 'colors': overrides $colors-[light|dark]
     // 'semantic-colors': overrides $semantic-colors
     // 'font': overrides $font
@@ -27,8 +27,10 @@ $themes: (
     // 'bg-focus': overrides $bg-focus-[light|dark]
     // 'bd': overrides $bd-[light|dark]
     // 'bd-focus': overrides $bd-focus-[light|dark]
+    'brightness': 'light',
   ),
-  'default-dark': (
+  'default-dark':
+  (
     'brightness': 'dark',
   ),
 ) !default;
@@ -62,7 +64,7 @@ $themes-categories-applied-at: (
 }
 
 @function combine-with-default-map($map, $default-map) {
-  @if ($map==null) { $map: () }
+  @if ($map==null) { $map: (); }
 
   @if (map.get($map, '$replace')) {
     @return map.remove($map, '$replace');
@@ -88,7 +90,7 @@ $themes-categories-applied-at: (
   $theme: map.merge($theme, ('semantic-colors': $semantic-colors));
 
   // font
-  @if (map.get($theme, 'font')==null) { $theme: map.merge($theme, (font: fonts.$font)) }
+  @if (map.get($theme, 'font')==null) { $theme: map.merge($theme, (font: fonts.$font)); }
 
   // text-color
   $text-color: if($brightness=='light', colors.$text-color-light, colors.$text-color-dark);
@@ -149,13 +151,16 @@ $themes-categories-applied-at: (
 
   $fg-swatch-names: map.keys(map.get($theme, 'fg-swatches'));
 
-  $theme: map.merge($theme, (
-    'color-names': $color-names,
-    'semantic-color-names': $semantic-color-names,
-    'color-names-all': $color-names-all,
-    'swatch-names': $swatch-names,
-    'fg-swatch-names': $fg-swatch-names,
-  ));
+  $theme: map.merge(
+    $theme,
+    (
+      'color-names': $color-names,
+      'semantic-color-names': $semantic-color-names,
+      'color-names-all': $color-names-all,
+      'swatch-names': $swatch-names,
+      'fg-swatch-names': $fg-swatch-names,
+    )
+  );
 
   @return $theme;
 }

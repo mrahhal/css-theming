@@ -109,6 +109,6 @@
   @include module-general.apply();
 }
 
-@if(module-variables.$enable-module-inputs) {
+@if (module-variables.$enable-module-inputs) {
   @include module-inputs.apply();
 }
