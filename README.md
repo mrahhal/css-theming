@@ -53,10 +53,10 @@ In any sample app, hit "T" on the keyboard anywhere to flip between the 2 main t
 
 ## Sites Using `css-theming`
 
-- http://niai.mrahhal.net
+- https://niai.mrahhal.net
+- https://lapisapp.com
 
 ## Thanks
 
-@rubix-labs: All of this is the results of my work here
-
-@sayache: Graphic, UX and UI designer
+- @rubix-labs: I worked on most of this as part of my work here.
+- @sayache: Graphic, UX and UI designer.
