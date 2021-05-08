@@ -9,7 +9,7 @@ Uses modern CSS and SCSS. Color contrast is at least AA compatible by default!
 
 ![niai](https://raw.githubusercontent.com/mrahhal/css-theming/master/images/niai.gif)
 
-<p align="center">from http://niai.mrahhal.net</p>
+<p align="center">from https://niai.mrahhal.net</p>
 
 ## At a Glance
 
