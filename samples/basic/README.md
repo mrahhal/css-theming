@@ -5,10 +5,10 @@ When you run this, hit "T" on the keyboard anywhere to flip between the 2 main t
 
 ## Project setup
 ```
-$ npm install
+npm install
 ```
 
 ### Run
 ```
-$ npm start
+npm start
 ```
