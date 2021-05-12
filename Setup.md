@@ -5,7 +5,7 @@ css-theming is released as an npm package.
 [![npm](https://img.shields.io/npm/v/css-theming.svg)](https://www.npmjs.com/package/css-theming)
 
 ```
-npm i css-theming --save
+npm i css-theming
 ```
 
 There are both javascript modules (typescript type definitions available) and SCSS src files after you install the package. Make sure you're using dart-sass >= 1.23 in your app.
@@ -24,7 +24,7 @@ The SCSS src files are at "css-theming/src/scss/":
 
 > Check the different samples in the GitHub repo to see this up close.
 
-# Setup
+## Setup
 
 There are 3 things you have to do to setup your project to work with css-theming.
 
@@ -32,7 +32,7 @@ There are 3 things you have to do to setup your project to work with css-theming
 - Import the main `css-theming` SCSS file from your app scss file.
 - Call `initializeTheming` from javascript/typescript in the startup of your app.
 
-## Defining System themes
+### Defining System themes
 
 By default, css-theming gives you 2 themes, one light theme called `"default"` and another dark theme called `"default-dark"`. You're free to completely override this to define your own system themes.
 
@@ -60,7 +60,9 @@ $ct-themes: (
 
 We import the "pure" SCSS file from css-theming after we override the variables we want, as shown in the above snippet.
 
-## Importing The Main css-theming SCSS File
+> Note that the [sass module system](https://sass-lang.com/blog/the-module-system-is-launched) is fully supported. If your app uses that, you can use `@use` to import and override variables. Check the [basic-scss-module-system sample](./samples/basic-scss-module-system) for example usage.
+
+### Importing The Main css-theming SCSS File
 
 In your main app SCSS file:
 
@@ -68,9 +70,9 @@ In your main app SCSS file:
 @import '../../node_modules/css-theming/src/scss/css-theming';
 ```
 
-## Calling `initializeTheming`
+### Calling `initializeTheming()`
 
-Call `initializeTheming` as soon as you can in your app's lifecycle. This can be the `created` lifecycle hook of the main app component in a Vue.js app, the constructor of the main app component in an angular app, etc...
+Call `initializeTheming()` as soon as you can in your app's lifecycle. This can be the `created` lifecycle hook of the main app component in a Vue.js app, the constructor of the main app component in an angular app, etc...
 
 ```javascript
 import {
