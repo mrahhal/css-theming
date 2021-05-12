@@ -65,14 +65,13 @@ We import the "pure" SCSS file from css-theming after we override the variables 
 ### Importing The Main css-theming SCSS File
 
 In your main app SCSS file:
-
 ```scss
 @import '../../node_modules/css-theming/src/scss/css-theming';
 ```
 
-### Calling `initializeTheming()`
+### Calling `initializeTheming`
 
-Call `initializeTheming()` as soon as you can in your app's lifecycle. This can be the `created` lifecycle hook of the main app component in a Vue.js app, the constructor of the main app component in an angular app, etc...
+Call `initializeTheming` as soon as you can in your app's lifecycle. This can be the `created` lifecycle hook of the main app component in a Vue.js app, the constructor of the main app component in an angular app, etc...
 
 ```javascript
 import {
@@ -83,8 +82,9 @@ import {
 initializeTheming(/* theme */);
 ```
 
-In this basic example, `initializeTheming` can optionally take the theme that you want to initialize at first. Let's assume we always want to load `"default-dark"` whenever the application loads.
+In this basic example, `initializeTheming` can optionally take the theme that you want to initialize at first. Not providing an argument to this will allow css-theming to select a theme that matches the user's system preference.
 
+Let's assume we always want to load `"default-dark"` whenever the application loads:
 ```javascript
 import {
   initializeTheming,
@@ -95,14 +95,24 @@ import {
 initializeTheming(getTheme('default-dark'));
 ```
 
-Of course, instead of hard coding the initial theme you load, you can easily get this value from local storage or from your backend if you save the user's preference there.
+Of course, instead of hard coding the initial theme you load, you can easily get this value from your backend if you save the user's preference there.
 
-> If you register additional category themes you'll call `initializeTheming` once for each category, as we'll explain in a later lesson.
+Alternatively, you can use the built in `ThemeStorage` which uses localstorage to persist selected themes:
+```
+const themeStorage = new ThemeStorage('css-theming-theme');
+themeStorage.initializeTheming(); // Calls css-theming's initializeTheming for you
+
+// When the user changes the theme:
+themeStorage.setThemeName(newTheme);
+```
+
+> Check the [basic sample](./samples/basic) for example usage of `ThemeStorage`.
+
+> If you register additional category themes you'll have to call `initializeTheming` once for each category.
 
 ## Setting a New Theme
 
 You tell css-theming to change the current active theme by calling `setTheme`:
-
 ```javascript
 import {
   setTheme,
@@ -112,7 +122,7 @@ import {
 setTheme('[theme-name]');
 ```
 
-This of course can be in response to a button click for example, that the user clicks on to choose what theme he wants to activate.
+This can be handled in response to the user selecting a theme from a list of available themes for example.
 
 ---
 
