@@ -1,5 +1,4 @@
-import { Theme } from './models';
-import { getAllThemes, getTheme, initializeTheming, setTheme } from './themes';
+import { getTheme, initializeTheming, setTheme } from './themes';
 
 export class ThemeStorage {
   constructor(
@@ -10,25 +9,8 @@ export class ThemeStorage {
 
   initializeTheming() {
     const themeName = this._getThemeNameFromLocalStorage();
-    if (themeName) {
-      initializeTheming(getTheme(themeName), this._category);
-    } else {
-      let theme: Theme | undefined;
-
-      // There's no stored theme, so we'll check if the user's system prefers dark themes.
-      // We can only do that if the browser supports matchMedia.
-      if (!!window.matchMedia) {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          // Let's find the first dark theme and activate it.
-          const darkThemes = getAllThemes().filter(t => t.brightness === 'dark');
-          if (darkThemes.length) {
-            theme = darkThemes[0];
-          }
-        }
-      }
-
-      initializeTheming(theme, this._category);
-    }
+    const theme = themeName ? getTheme(themeName) : null;
+    initializeTheming(theme, this._category);
   }
 
   setThemeName(themeName: string) {

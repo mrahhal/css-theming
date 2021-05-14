@@ -24,9 +24,19 @@ function getThemeBrightnessCssName(theme: Theme) {
   return `theme-${categoryText}brightness-${theme.brightness}`;
 }
 
-export function initializeTheming(theme?: Theme, category: string | null = null) {
+function getUserPreferredBrightness(): Brightness {
+  // We can only do that if the browser supports matchMedia
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
+
+  return 'light';
+}
+
+export function initializeTheming(theme?: Theme | null, category: string | null = null) {
   if (!theme) {
-    theme = getThemes(category)[0];
+    const preferredBrightness = getUserPreferredBrightness();
+    theme = getThemes(category).filter(t => t.brightness == preferredBrightness)[0];
   }
   _setCurrentTheme(category, theme);
   htmlElement.classList.add(theme.cssName);
