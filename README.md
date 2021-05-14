@@ -34,8 +34,12 @@ It contains a deep dive into the problems involved with creating themes and thei
 ## Development
 
 ```
-npm i -g rollup
 npm i
+```
+
+To run in watch and compile in watch mode:
+```
+npm start
 ```
 
 ## Samples
