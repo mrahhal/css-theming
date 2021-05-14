@@ -224,9 +224,16 @@ $themes-categories-applied-at: (
 @mixin themes-apply() {
   @include themes-loop {
     $applied-at: map.get($themes-categories-applied-at, $category);
-    .#{$theme-css-name} #{$applied-at},
-    .ct-theme-preview.#{$theme-css-name} {
-      @content;
+    @if (& != null) {
+      .#{$theme-css-name} #{$applied-at} &,
+      .ct-theme-preview.#{$theme-css-name} & {
+        @content;
+      }
+    } @else {
+      .#{$theme-css-name} #{$applied-at},
+      .ct-theme-preview.#{$theme-css-name} {
+        @content;
+      }
     }
   }
 }

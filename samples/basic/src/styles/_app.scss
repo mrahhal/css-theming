@@ -43,5 +43,8 @@ body {
 }
 
 a {
-  color: var(--blue);
+  // We can also use themes-apply like this inside a selector
+  @include ct-themes-apply {
+    color: #{if($brightness == 'light', var(--blue), var(--green))};
+  }
 }
