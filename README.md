@@ -42,12 +42,6 @@ To run compile in watch mode:
 npm start
 ```
 
-You can then cd to any sample and run it:
-```
-npm i
-npm start
-```
-
 ## Samples
 
 The "samples" folder contain several samples that show case some of the use cases. They're written in Vue so that we can focus on the theming aspects.
