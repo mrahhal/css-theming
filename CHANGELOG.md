@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-N/A
+- Allow using themes-apply inside a selector. ([#16](https://github.com/mrahhal/css-theming/issues/16))
 
 ## 1.4.0
 
