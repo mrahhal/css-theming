@@ -37,8 +37,14 @@ It contains a deep dive into the problems involved with creating themes and thei
 npm i
 ```
 
-To run in watch and compile in watch mode:
+To run compile in watch mode:
 ```
+npm start
+```
+
+You can then cd to any sample and run it:
+```
+npm i
 npm start
 ```
 

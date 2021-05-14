@@ -2,7 +2,12 @@
 
 ## Unreleased
 
+N/A
+
+## 1.5.0
+
 - Allow using themes-apply inside a selector. ([#16](https://github.com/mrahhal/css-theming/issues/16))
+- Compute rgb variables for fgs too. ([#15](https://github.com/mrahhal/css-theming/issues/15))
 
 ## 1.4.0
 
