@@ -92,7 +92,7 @@
   }
 
   @each $level, $percent in $fg-swatches {
-    --fg-#{$level}: #{color.mix($fg-target, $mixture-pure, $percent)};
+    @include colors.set-color-variable-with-rgb(--fg-#{$level}, color.mix($fg-target, $mixture-pure, $percent));
   }
 
   @include themes.text-color-variables($text-color);
