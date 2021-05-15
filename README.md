@@ -11,7 +11,7 @@ Uses modern CSS and SCSS. Color contrast is at least AA compatible by default!
 
 <p align="center">from https://niai.mrahhal.net</p>
 
-## At a Glance
+## At a glance
 
 - Themes and theme category management
 - Auto detects user's system preference and activates the appropriate theme
@@ -37,7 +37,7 @@ It contains a deep dive into the problems involved with creating themes and thei
 npm i
 ```
 
-To run compile in watch mode:
+To run in watch mode:
 ```
 npm start
 ```
@@ -55,7 +55,7 @@ npm start
 
 In any sample app, hit "t" on the keyboard to flip between the 2 main themes and see instant changes.
 
-## Sites Using css-theming
+## Sites using css-theming
 
 - https://niai.mrahhal.net
 - https://lapisapp.com
