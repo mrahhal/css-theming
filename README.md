@@ -44,7 +44,7 @@ npm start
 
 ## Samples
 
-The "samples" folder contain several samples that show case some of the use cases. They're written in Vue so that we can focus on the theming aspects.
+The [samples](./samples) folder contain several samples that show case some of the use cases. They're written in Vue so that we can focus on the theming aspects.
 
 To run any sample app, run the following inside its folder:
 
@@ -53,12 +53,13 @@ npm i
 npm start
 ```
 
-In any sample app, hit "T" on the keyboard anywhere to flip between the 2 main themes and see instant changes.
+In any sample app, hit "t" on the keyboard to flip between the 2 main themes and see instant changes.
 
-## Sites Using `css-theming`
+## Sites Using css-theming
 
 - https://niai.mrahhal.net
 - https://lapisapp.com
+- https://github.com/maezzedine/Outlook
 
 ## Thanks
 
