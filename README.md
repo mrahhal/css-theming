@@ -23,7 +23,7 @@ Uses modern CSS and SCSS. Color contrast is at least AA compatible by default!
 
 ## Installation & Setup
 
-[Check this document](Setup.md).
+[Check this document](setup.md).
 
 ## Course
 
