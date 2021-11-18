@@ -1,7 +1,7 @@
 import { getDesignValue, getThemeCssNames } from './design-values';
 import { Brightness, Theme } from './models';
 
-const htmlElement = document.getElementsByTagName('html')[0];
+const htmlElement = document.documentElement;
 
 const DEFAULT_CATEGORY_KEY = '__DEFAULT_CATEGORY__';
 
