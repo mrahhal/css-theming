@@ -5,7 +5,7 @@
 
 A platform for CSS theming.
 
-Uses modern CSS and SCSS. Color contrast is at least AA compatible by default!
+Uses modern CSS and SCSS. Contrast of computed colors is at least AA compatible by default.
 
 ![niai](https://raw.githubusercontent.com/mrahhal/css-theming/master/images/niai.gif)
 
@@ -55,7 +55,7 @@ npm start
 
 In any sample app, hit "t" on the keyboard to flip between the 2 main themes and see instant changes.
 
-## Sites using css-theming
+## Apps using css-theming
 
 - https://niai.mrahhal.net
 - https://lapisapp.com
@@ -63,5 +63,5 @@ In any sample app, hit "t" on the keyboard to flip between the 2 main themes and
 
 ## Thanks
 
-- @rubix-labs: I worked on most of this as part of my work here.
+- @rubix-labs: I worked on most of this as part of my job here.
 - @sayache: Graphic, UX and UI designer.
