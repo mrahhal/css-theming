@@ -17,6 +17,16 @@ function _setCurrentTheme(category: string | null, theme: Theme) {
   currentThemes[category] = theme;
 }
 
+function _addThemeClasses(theme: Theme) {
+  htmlElement.classList.add(theme.cssName);
+  htmlElement.classList.add(getThemeBrightnessCssName(theme));
+}
+
+function _removeThemeClasses(theme: Theme) {
+  htmlElement.classList.remove(theme.cssName);
+  htmlElement.classList.remove(getThemeBrightnessCssName(theme));
+}
+
 let themes: Theme[];
 
 function getThemeBrightnessCssName(theme: Theme) {
@@ -38,17 +48,14 @@ export function initializeTheming(theme?: Theme | null, category: string | null 
     const preferredBrightness = getUserPreferredBrightness();
     theme = getThemes(category).filter(t => t.brightness == preferredBrightness)[0];
   }
+  _addThemeClasses(theme);
   _setCurrentTheme(category, theme);
-  htmlElement.classList.add(theme.cssName);
-  htmlElement.classList.add(getThemeBrightnessCssName(theme));
 }
 
 export function setTheme(theme: Theme) {
   const previousTheme = _getCurrentTheme(theme.category);
-  htmlElement.classList.remove(previousTheme.cssName);
-  htmlElement.classList.remove(getThemeBrightnessCssName(previousTheme));
-  htmlElement.classList.add(theme.cssName);
-  htmlElement.classList.add(getThemeBrightnessCssName(theme));
+  _removeThemeClasses(previousTheme);
+  _addThemeClasses(theme);
   _setCurrentTheme(theme.category, theme);
 }
 
