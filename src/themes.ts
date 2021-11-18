@@ -35,7 +35,7 @@ function getThemeBrightnessCssName(theme: Theme) {
 }
 
 function getUserPreferredBrightness(): Brightness {
-  // We can only do that if the browser supports matchMedia
+  // We can only do that if the browser supports matchMedia.
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     return 'dark';
   }

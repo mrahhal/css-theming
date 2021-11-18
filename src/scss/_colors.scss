@@ -3,7 +3,7 @@
 
 $compute-rgb-variables: false !default;
 
-// Colors used in light themes
+// Colors used in light themes.
 $colors-light: (
   'grey': #697c93,
   'brown': #96663c,
@@ -23,7 +23,7 @@ $colors-light: (
   'green': #22d35d,
 ) !default;
 
-// Colors used in dark themes
+// Colors used in dark themes.
 $colors-dark: (
   'grey': #697c93,
   'brown': #96663c,
@@ -43,7 +43,7 @@ $colors-dark: (
   'green': #4edc7d,
 ) !default;
 
-// Semantic colors to be used for semantic color references instead of a hard coded color
+// Semantic colors to be used for semantic color references instead of a hard coded color.
 $semantic-colors: (
   'primary': 'purple',
   'success': 'green',
@@ -52,10 +52,10 @@ $semantic-colors: (
   'danger': 'red',
 ) !default;
 
-// Main text color used in light themes
+// Main text color used in light themes.
 $text-color-light: 56, 63, 73 !default;
 
-// Main text color used in dark themes
+// Main text color used in dark themes.
 $text-color-dark: 255, 255, 255 !default;
 
 @function get-rgb($color) {

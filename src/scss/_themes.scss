@@ -10,7 +10,7 @@
 // $themes define the system defined themes of the app.
 // The only required property on the theme is `brightness`. Everything else will fallback to default values if not specified.
 
-// This defines a map from a theme's name to another map that customizes the theme's props
+// This defines a map from a theme's name to another map that customizes the theme's props.
 $themes: (
   'default':
   (
