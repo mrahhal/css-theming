@@ -24,6 +24,10 @@
 }
 
 @include themes.themes-loop {
+  .#{themes.$theme-css-name} {
+    color-scheme: #{themes.$brightness};
+  }
+
   .#{themes.$theme-css-name} body {
     --ct-swatch-names: #{map.get(themes.$theme, 'swatch-names')};
     --ct-fg-swatch-names: #{map.get(themes.$theme, 'fg-swatch-names')};
