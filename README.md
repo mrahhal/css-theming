@@ -33,14 +33,7 @@ It contains a deep dive into the problems involved with creating themes and thei
 
 ## Development
 
-```
-npm i
-```
-
-To run in watch mode:
-```
-npm start
-```
+[DEVELOPMENT.md](DEVELOPMENT.md)
 
 ## Samples
 

@@ -2,18 +2,30 @@
 
 ## Running
 
-We run the watcher for css-theming itself + the basic sample to test the changes. Use `npm start` at the root of this repo to run the watcher.
+Install packages:
+```
+npm i
+```
 
-## Versioning
+We run the watcher for css-theming:
+```
+npm start
+```
 
-We use semantic versioning.
+To test the changes run any sample by going to its directory and:
+```
+npm i
+npm start
+```
 
-Use `npm version [...]` to update the version in both git and package.json files.
+## Releasing
+
+We use https://github.com/mrahhal/release-cycle as a reference when releasing.
 
 ## Publishing
 
 We use the "files" property in package.json to include things we want in the npm package.
 
-Use `npm pack` to create a zipped package so that you can inspect the files the user will acquire.
+Use `npm pack` to create a zipped package so that you can inspect the files it'll include.
 
-`npm publish` will publish the package to nuget.
+`npm publish` will publish the package to npm.
