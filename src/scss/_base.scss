@@ -55,20 +55,16 @@
   $mixture-pure: if(themes.$brightness=='light', white, black);
   $mixture-pure-reverse: if(themes.$brightness=='light', black, white);
 
-  // Obtain fg-0 color. Mix it with a pure mixture (white/black) to obtain fg levels.
-  // Mix all colors with fg-0 to obtain color levels.
+  // Obtain fg-0 color first because we use it to mix almost all other color levels.
   $fg-0-percentage: map.get($fg-swatches, 0);
-  $fg-0: color.mix($fg-target, $mixture-pure, $fg-0-percentage);
-
-  $mixture: $fg-0;
+  $fg-0: color.mix($fg-target, white, $fg-0-percentage);
 
   @each $name in $color-names {
     $color: themes.theme-color-get(themes.$theme, $name);
-    $resolved-mixture: if($name==$fg-target, $mixture-pure, $mixture);
     @each $swatch, $percentage in $swatches {
       $result: null;
       @if ($percentage <= 100) {
-        $result: color.mix($color, $resolved-mixture, $percentage);
+        $result: color.mix($color, $fg-0, $percentage);
       } @else {
         $result: color.mix($color, $mixture-pure-reverse, 200 - $percentage);
       }
