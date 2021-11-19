@@ -15,6 +15,7 @@ $themes: (
   'default':
   (
     // 'colors': overrides $colors-[light|dark]
+    // 'colors-text-scale': overrides $colors-text-scale-[light|dark]
     // 'semantic-colors': overrides $semantic-colors
     // 'font': overrides $font
     // 'text-color': overrides $text-color-[light|dark]
@@ -83,6 +84,12 @@ $themes-categories-applied-at: (
   $colors-default: if($brightness=='light', colors.$colors-light, colors.$colors-dark);
   $colors: combine-with-default-map(map.get($theme, 'colors'), $colors-default);
   $theme: map.merge($theme, ('colors': $colors));
+
+  // colors-text-scale
+  $colors-text-scale: if($brightness=='light', colors.$colors-text-scale-light, colors.$colors-text-scale-dark);
+  @if (map.get($theme, 'colors-text-scale')==null) {
+    $theme: map.merge($theme, ('colors-text-scale': $colors-text-scale));
+  }
 
   // semantic-colors
   $semantic-colors-default: colors.$semantic-colors;
