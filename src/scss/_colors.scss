@@ -62,7 +62,7 @@ $text-color-dark: 255, 255, 255 !default;
 $colors-text-scale-light: -40%;
 
 // Lightness scaling of the text variant of colors used in dark themes.
-$colors-text-scale-dark: 50%;
+$colors-text-scale-dark: 70%;
 
 @function get-rgb($color) {
   $r: color.red($color);
