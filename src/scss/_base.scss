@@ -24,10 +24,6 @@
 }
 
 @include themes.themes-loop {
-  .#{themes.$theme-css-name} {
-    color-scheme: #{themes.$brightness};
-  }
-
   .#{themes.$theme-css-name} body {
     --ct-swatch-names: #{map.get(themes.$theme, 'swatch-names')};
     --ct-fg-swatch-names: #{map.get(themes.$theme, 'fg-swatch-names')};
@@ -37,6 +33,8 @@
 }
 
 @include themes.themes-apply {
+  color-scheme: #{themes.$brightness};
+
   $bg-main: map.get(themes.$theme, 'bg-main');
   $bg-input: map.get(themes.$theme, 'bg-input');
   $swatches: map.get(themes.$theme, 'swatches');
