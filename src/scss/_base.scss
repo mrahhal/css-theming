@@ -46,6 +46,7 @@
   $color-names: map.get(themes.$theme, 'color-names');
   $semantic-color-names: map.get(themes.$theme, 'semantic-color-names');
   $color-names-all: map.get(themes.$theme, 'color-names-all');
+  $colors-text-scale: map.get(themes.$theme, 'colors-text-scale');
   $swatch-names: map.get(themes.$theme, 'swatch-names');
 
   $font: map.get(themes.$theme, 'font');
@@ -73,7 +74,7 @@
       }
       @include colors.set-color-variable-with-rgb(--#{$name}-#{$swatch}, $result);
     }
-    $color-text: if(themes.$brightness=='light', color.scale($color, $lightness: -40%), color.scale($color, $lightness: 50%));
+    $color-text: color.scale($color, $lightness: $colors-text-scale);
     @include colors.set-color-variable-with-rgb(--#{$name}-text, $color-text);
   }
 
