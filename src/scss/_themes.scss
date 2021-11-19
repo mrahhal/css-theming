@@ -40,7 +40,7 @@ $themes-categories: (
 ) !default;
 
 $themes-categories-applied-at: (
-  '': 'body',
+  '': '',
 ) !default;
 
 @mixin themes-category-register($category, $themes, $applied-at) {
