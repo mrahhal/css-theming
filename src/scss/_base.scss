@@ -66,12 +66,12 @@
   @each $name in $color-names {
     $color: themes.theme-color-get(themes.$theme, $name);
     $resolved-mixture: if($name==$fg-target, $mixture-pure, $mixture);
-    @each $swatch, $percent in $swatches {
+    @each $swatch, $percentage in $swatches {
       $result: null;
-      @if ($percent <= 100) {
-        $result: color.mix($color, $resolved-mixture, $percent);
+      @if ($percentage <= 100) {
+        $result: color.mix($color, $resolved-mixture, $percentage);
       } @else {
-        $result: color.mix($color, $mixture-pure-reverse, 200 - $percent);
+        $result: color.mix($color, $mixture-pure-reverse, 200 - $percentage);
       }
       @include colors.set-color-variable-with-rgb(--#{$name}-#{$swatch}, $result);
     }
@@ -95,8 +95,10 @@
     }
   }
 
-  @each $level, $percent in $fg-swatches {
-    @include colors.set-color-variable-with-rgb(--fg-#{$level}, color.mix($fg-target, $mixture-pure, $percent));
+  @each $level, $percentage in $fg-swatches {
+    @include colors.set-color-variable-with-rgb(
+      --fg-#{$level},
+      color.mix($fg-target, $mixture-pure, $percentage));
   }
 
   @include themes.text-color-variables($text-color);
