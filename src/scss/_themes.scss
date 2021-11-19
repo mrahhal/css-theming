@@ -73,7 +73,7 @@ $themes-categories-applied-at: (
   @return map.merge($default-map, $map);
 }
 
-// Normalize theme data, fill in defaults, and add computed values
+// Normalize theme data, fill in defaults, and add computed values.
 @function theme-normalize($category, $theme-name, $theme) {
   $theme: map.merge($theme, ('name': $theme-name, 'css-name': theme-css-name($category, $theme-name)));
 

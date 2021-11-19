@@ -4,7 +4,7 @@
 $fg-target-light: #8f9eb3 !default;
 
 // The blackish color that'll be used to mix fgs.
-$fg-target-dark: #282f37 !default;
+$fg-target-dark: #121212 !default;
 
 // Swatches used in light themes.
 $fg-swatches-light: (
@@ -15,7 +15,7 @@ $fg-swatches-light: (
 
 // Swatches used in dark themes.
 $fg-swatches-dark: (
-  0: 100%,
-  1: 80%,
-  2: 60%,
+  0: 95%,
+  1: 89%,
+  2: 84%,
 ) !default;
