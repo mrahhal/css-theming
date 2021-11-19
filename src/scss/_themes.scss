@@ -101,7 +101,9 @@ $themes-categories-applied-at: (
 
   // text-color
   $text-color: if($brightness=='light', colors.$text-color-light, colors.$text-color-dark);
-  $theme: map.merge($theme, ('text-color': $text-color));
+  @if (map.get($theme, 'text-color')==null) {
+    $theme: map.merge($theme, ('text-color': $text-color));
+  }
 
   // bg-main
   $bg-main: if($brightness=='light', bgs.$bg-main-light, bgs.$bg-main-dark);
