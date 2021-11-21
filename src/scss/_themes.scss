@@ -22,7 +22,7 @@ $themes: (
     // 'bg-main': overrides $bg-main-[light|dark]
     // 'bg-input': overrides $bg-input-[light|dark]
     // 'swatches': overrides $swatches
-    // 'fg-target': overrides $fg-target-[light|dark]
+    // 'fg-target': overrides auto computed fg targets
     // 'fg-swatches': overrides $fg-swatches-[light|dark]
     // 'bg': overrides $bg-[light|dark]
     // 'bg-focus': overrides $bg-focus-[light|dark]
@@ -115,12 +115,6 @@ $themes-categories-applied-at: (
   $bg-input: if($brightness=='light', bgs.$bg-input-light, bgs.$bg-input-dark);
   @if (map.get($theme, 'bg-input')==null) {
     $theme: map.merge($theme, ('bg-input': $bg-input));
-  }
-
-  // fg-target
-  $fg-target: if($brightness=='light', fgs.$fg-target-light, fgs.$fg-target-dark);
-  @if (map.get($theme, 'fg-target')==null) {
-    $theme: map.merge($theme, ('fg-target': $fg-target));
   }
 
   // swatches

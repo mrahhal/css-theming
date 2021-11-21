@@ -55,7 +55,18 @@
   $mixture-pure: if(themes.$brightness=='light', white, black);
   $mixture-pure-reverse: if(themes.$brightness=='light', black, white);
 
-  // Obtain fg-0 color first because we use it to mix almost all other color levels.
+  @if ($fg-target==null) {
+    // Auto compute fg-target.
+    @if (themes.$brightness=='light') {
+      // In a light theme it's computed by changing the lightness of bg-main to 85%.
+      $fg-target: color.change($bg-main, $lightness: 85%);
+    } @else {
+      // In a dark theme it's just bg-main.
+      $fg-target: $bg-main;
+    }
+  }
+
+  // Obtain fg-0 color first because we use it to mix most other color levels.
   $fg-0-percentage: map.get($fg-swatches, 0);
   $fg-0: color.mix($fg-target, white, $fg-0-percentage);
 
