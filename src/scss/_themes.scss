@@ -15,6 +15,7 @@ $themes: (
   'default':
   (
     // 'colors': overrides $colors-[light|dark]
+    // 'use-colors': if given, specifies which colors from the default palette to include
     // 'colors-text-scale': overrides $colors-text-scale-[light|dark]
     // 'semantic-colors': overrides $semantic-colors
     // 'font': overrides $font
@@ -74,6 +75,18 @@ $themes-categories-applied-at: (
   @return map.merge($default-map, $map);
 }
 
+@function strip-colors($colors, $use-colors) {
+  @if ($use-colors==null) {
+    @return $colors;
+  }
+
+  $new-colors-map: ();
+  @each $color in $use-colors {
+    $new-colors-map: map.merge($new-colors-map, ($color: map.get($colors, $color)));
+  }
+  @return $new-colors-map;
+}
+
 // Normalize theme data, fill in defaults, and add computed values.
 @function normalize-theme($category, $theme-name, $theme) {
   $theme: map.merge($theme, ('name': $theme-name, 'css-name': get-theme-css-name($category, $theme-name)));
@@ -83,6 +96,7 @@ $themes-categories-applied-at: (
   // colors
   $colors-default: if($brightness=='light', colors.$colors-light, colors.$colors-dark);
   $colors: combine-with-default-map(map.get($theme, 'colors'), $colors-default);
+  $colors: strip-colors($colors, map.get($theme, 'use-colors'));
   $theme: map.merge($theme, ('colors': $colors));
 
   // colors-text-scale
