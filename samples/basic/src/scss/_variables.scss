@@ -10,6 +10,10 @@ $ct-themes: (
   ),
 );
 
+// You can change the bg-main colors like this.
+// $ct-bg-main-light: #edf1f7;
+// $ct-bg-main-dark: #141010;
+
 $ct-compute-rgb-variables: true; // Remove this if you don't need to use rgb color variables. (Useful when you want to use rgba with the colors)
 
 @import '../../node_modules/css-theming/src/scss/pure';
