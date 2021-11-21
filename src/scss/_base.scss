@@ -71,7 +71,7 @@
   $fg-0: color.mix($fg-target, white, $fg-0-percentage);
 
   @each $name in $color-names {
-    $color: themes.theme-color-get(themes.$theme, $name);
+    $color: themes.get-theme-color(themes.$theme, $name);
     @each $swatch, $percentage in $swatches {
       $result: null;
       @if ($percentage <= 100) {
@@ -86,7 +86,7 @@
   }
 
   @each $name in $semantic-color-names {
-    $target: themes.theme-semantic-color-get(themes.$theme, $name);
+    $target: themes.get-theme-semantic-color(themes.$theme, $name);
     @each $swatch in $swatch-names {
       @include colors.set-semantic-color-variable-with-rgb($name, $swatch, $target);
     }

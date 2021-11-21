@@ -24,4 +24,4 @@ $ct-sidebar-themes: (
   )
 );
 
-@include ct-themes-category-register('sidebar', $ct-sidebar-themes, $applied-at: '.sidebar');
+@include ct-register-theme-category('sidebar', $ct-sidebar-themes, $applied-at: '.sidebar');
