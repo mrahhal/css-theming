@@ -1,12 +1,18 @@
 // Override the system defined themes
 // Since we're not adding anything beyond the defaults that css-theming already gives us,
 // we can just completely remove this.
+
+// You can use this to only make css-theming add the colors you want.
+// $use-colors: ('purple', 'green', 'blue', 'orange', 'red');
+
 $ct-themes: (
   'default': (
     'brightness': 'light',
+    // 'use-colors': $use-colors,
   ),
   'default-dark': (
     'brightness': 'dark',
+    // 'use-colors': $use-colors,
   ),
 );
 
