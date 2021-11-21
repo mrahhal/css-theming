@@ -44,9 +44,9 @@ $themes-categories-applied-at: (
   '': '',
 ) !default;
 
-@mixin themes-category-register($category, $themes, $applied-at) {
+@mixin register-theme-category($category, $themes, $applied-at) {
   @each $theme-name, $theme in $themes {
-    $theme: theme-normalize($category, $theme-name, $theme);
+    $theme: normalize-theme($category, $theme-name, $theme);
     $themes: map.merge($themes, ($theme-name: $theme));
   }
 
@@ -56,12 +56,12 @@ $themes-categories-applied-at: (
   @include compute-theme-css-names();
 }
 
-@function theme-category-css-prefix($category) {
+@function get-theme-category-css-prefix($category) {
   @return if($category=='','',#{$category}-);
 }
 
-@function theme-css-name($category, $theme-name) {
-  @return theme-#{theme-category-css-prefix($category)}#{$theme-name};
+@function get-theme-css-name($category, $theme-name) {
+  @return theme-#{get-theme-category-css-prefix($category)}#{$theme-name};
 }
 
 @function combine-with-default-map($map, $default-map) {
@@ -75,8 +75,8 @@ $themes-categories-applied-at: (
 }
 
 // Normalize theme data, fill in defaults, and add computed values.
-@function theme-normalize($category, $theme-name, $theme) {
-  $theme: map.merge($theme, ('name': $theme-name, 'css-name': theme-css-name($category, $theme-name)));
+@function normalize-theme($category, $theme-name, $theme) {
+  $theme: map.merge($theme, ('name': $theme-name, 'css-name': get-theme-css-name($category, $theme-name)));
 
   $brightness: map.get($theme, 'brightness');
 
@@ -168,19 +168,19 @@ $themes-categories-applied-at: (
   @return $theme;
 }
 
-@function theme-color-get($theme, $color) {
+@function get-theme-color($theme, $color) {
   $colors: map.get($theme, 'colors');
   @return map.get($colors, $color);
 }
 
-@function theme-semantic-color-get($theme, $color) {
+@function get-theme-semantic-color($theme, $color) {
   $semantic-colors: map.get($theme, 'semantic-colors');
   @return map.get($semantic-colors, $color);
 }
 
-@function theme-semantic-color-resolved-get($theme, $color) {
-  $target: theme-semantic-color-get($theme, $color);
-  @return theme-color-get($theme, $target);
+@function get-resolved-theme-semantic-color($theme, $color) {
+  $target: get-theme-semantic-color($theme, $color);
+  @return get-theme-color($theme, $target);
 }
 
 @mixin bg-variables($brightness) {
@@ -242,7 +242,7 @@ $themes-categories-applied-at: (
 
 @each $category, $themes in $themes-categories {
   @each $theme-name, $theme in $themes {
-    $themes: map.merge($themes, ($theme-name: theme-normalize($category, $theme-name, $theme)));
+    $themes: map.merge($themes, ($theme-name: normalize-theme($category, $theme-name, $theme)));
   }
   $themes-categories: map.merge($themes-categories, ($category: $themes));
 }

@@ -24,4 +24,4 @@ $ct-navbar-themes: (
   )
 );
 
-@include ct-themes-category-register('navbar', $ct-navbar-themes, $applied-at: '.navbar');
+@include ct-register-theme-category('navbar', $ct-navbar-themes, $applied-at: '.navbar');
