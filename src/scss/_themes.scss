@@ -66,9 +66,9 @@ $themes-categories-applied-at: (
 }
 
 @function combine-with-default-map($map, $default-map) {
-  @if ($map==null) { $map: (); }
+  @if not $map { $map: (); }
 
-  @if (map.get($map, '$replace')) {
+  @if map.get($map, '$replace') {
     @return map.remove($map, '$replace');
   }
 
@@ -76,7 +76,7 @@ $themes-categories-applied-at: (
 }
 
 @function strip-colors($colors, $use-colors) {
-  @if ($use-colors==null) {
+  @if not $use-colors {
     @return $colors;
   }
 
@@ -94,14 +94,14 @@ $themes-categories-applied-at: (
   $brightness: map.get($theme, 'brightness');
 
   // colors
-  $colors-default: if($brightness=='light', colors.$colors-light, colors.$colors-dark);
+  $colors-default: if($brightness == 'light', colors.$colors-light, colors.$colors-dark);
   $colors: combine-with-default-map(map.get($theme, 'colors'), $colors-default);
   $colors: strip-colors($colors, map.get($theme, 'use-colors'));
   $theme: map.merge($theme, ('colors': $colors));
 
   // colors-text-scale
-  $colors-text-scale: if($brightness=='light', colors.$colors-text-scale-light, colors.$colors-text-scale-dark);
-  @if (map.get($theme, 'colors-text-scale')==null) {
+  $colors-text-scale: if($brightness == 'light', colors.$colors-text-scale-light, colors.$colors-text-scale-dark);
+  @if not map.get($theme, 'colors-text-scale') {
     $theme: map.merge($theme, ('colors-text-scale': $colors-text-scale));
   }
 
@@ -111,50 +111,50 @@ $themes-categories-applied-at: (
   $theme: map.merge($theme, ('semantic-colors': $semantic-colors));
 
   // font
-  @if (map.get($theme, 'font')==null) { $theme: map.merge($theme, (font: fonts.$font)); }
+  @if not map.get($theme, 'font') { $theme: map.merge($theme, (font: fonts.$font)); }
 
   // text-color
-  $text-color: if($brightness=='light', colors.$text-color-light, colors.$text-color-dark);
-  @if (map.get($theme, 'text-color')==null) {
+  $text-color: if($brightness == 'light', colors.$text-color-light, colors.$text-color-dark);
+  @if not map.get($theme, 'text-color') {
     $theme: map.merge($theme, ('text-color': $text-color));
   }
 
   // bg-main
-  $bg-main: if($brightness=='light', bgs.$bg-main-light, bgs.$bg-main-dark);
-  @if (map.get($theme, 'bg-main')==null) {
+  $bg-main: if($brightness == 'light', bgs.$bg-main-light, bgs.$bg-main-dark);
+  @if not map.get($theme, 'bg-main') {
     $theme: map.merge($theme, ('bg-main': $bg-main));
   }
 
   // bg-input
-  $bg-input: if($brightness=='light', bgs.$bg-input-light, bgs.$bg-input-dark);
-  @if (map.get($theme, 'bg-input')==null) {
+  $bg-input: if($brightness == 'light', bgs.$bg-input-light, bgs.$bg-input-dark);
+  @if not map.get($theme, 'bg-input') {
     $theme: map.merge($theme, ('bg-input': $bg-input));
   }
 
   // swatches
-  @if (map.get($theme, 'swatches')==null) {
+  @if not map.get($theme, 'swatches') {
     $theme: map.merge($theme, ('swatches': swatches.$swatches));
   }
 
   // fg-swatches
-  @if (map.get($theme, 'fg-swatches')==null) {
-    $theme: map.merge($theme, ('fg-swatches': if($brightness=='light', fgs.$fg-swatches-light, fgs.$fg-swatches-dark)));
+  @if not map.get($theme, 'fg-swatches') {
+    $theme: map.merge($theme, ('fg-swatches': if($brightness == 'light', fgs.$fg-swatches-light, fgs.$fg-swatches-dark)));
   }
 
   // bg
-  @if (map.get($theme, 'bg')==null) {
-    $theme: map.merge($theme, ('bg': if($brightness=='light', bgs.$bg-light, bgs.$bg-dark)));
+  @if not map.get($theme, 'bg') {
+    $theme: map.merge($theme, ('bg': if($brightness == 'light', bgs.$bg-light, bgs.$bg-dark)));
   }
-  @if (map.get($theme, 'bg-focus')==null) {
-    $theme: map.merge($theme, ('bg-focus': if($brightness=='light', bgs.$bg-focus-light, bgs.$bg-focus-dark)));
+  @if not map.get($theme, 'bg-focus') {
+    $theme: map.merge($theme, ('bg-focus': if($brightness == 'light', bgs.$bg-focus-light, bgs.$bg-focus-dark)));
   }
 
   // bd
-  @if (map.get($theme, 'bd')==null) {
-    $theme: map.merge($theme, ('bd': if($brightness=='light', bds.$bd-light, bds.$bd-dark)));
+  @if not map.get($theme, 'bd') {
+    $theme: map.merge($theme, ('bd': if($brightness == 'light', bds.$bd-light, bds.$bd-dark)));
   }
-  @if (map.get($theme, 'bd-focus')==null) {
-    $theme: map.merge($theme, ('bd-focus': if($brightness=='light', bds.$bd-focus-light, bds.$bd-focus-dark)));
+  @if not map.get($theme, 'bd-focus') {
+    $theme: map.merge($theme, ('bd-focus': if($brightness == 'light', bds.$bd-focus-light, bds.$bd-focus-dark)));
   }
 
   // names
@@ -198,16 +198,16 @@ $themes-categories-applied-at: (
 }
 
 @mixin bg-variables($brightness) {
-  $bg: if($brightness=='light', bgs.$bg-light, bgs.$bg-dark);
-  $bg-focus: if($brightness=='light', bgs.$bg-focus-light, bgs.$bg-focus-dark);
+  $bg: if($brightness == 'light', bgs.$bg-light, bgs.$bg-dark);
+  $bg-focus: if($brightness == 'light', bgs.$bg-focus-light, bgs.$bg-focus-dark);
 
   --bg: #{$bg};
   --bg-focus: #{$bg-focus};
 }
 
 @mixin bd-variables($brightness) {
-  $bd: if($brightness=='light', bds.$bd-light, bds.$bd-dark);
-  $bd-focus: if($brightness=='light', bds.$bd-focus-light, bds.$bd-focus-dark);
+  $bd: if($brightness == 'light', bds.$bd-light, bds.$bd-dark);
+  $bd-focus: if($brightness == 'light', bds.$bd-focus-light, bds.$bd-focus-dark);
 
   --bd: #{$bd};
   --bd-focus: #{$bd-focus};
@@ -240,7 +240,7 @@ $themes-categories-applied-at: (
 @mixin themes-apply() {
   @include themes-loop {
     $applied-at: map.get($themes-categories-applied-at, $category);
-    @if (& != null) {
+    @if & {
       .#{$theme-css-name} #{$applied-at} &,
       .ct-theme-preview.#{$theme-css-name} & {
         @content;

@@ -73,14 +73,14 @@ $colors-text-scale-dark: 70%;
 
 @mixin set-color-variable-with-rgb($key, $color) {
   #{$key}: #{$color};
-  @if ($compute-rgb-variables) {
+  @if $compute-rgb-variables {
     #{$key}-rgb: #{get-rgb($color)};
   }
 }
 
 @mixin set-semantic-color-variable-with-rgb($name, $swatch, $target) {
   --#{$name}-#{$swatch}: var(--#{$target}-#{$swatch});
-  @if ($compute-rgb-variables) {
+  @if $compute-rgb-variables {
     --#{$name}-#{$swatch}-rgb: var(--#{$target}-#{$swatch}-rgb);
   }
 }

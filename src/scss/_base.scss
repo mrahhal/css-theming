@@ -52,12 +52,12 @@
   $font: map.get(themes.$theme, 'font');
   $text-color: map.get(themes.$theme, 'text-color');
 
-  $mixture-pure: if(themes.$brightness=='light', white, black);
-  $mixture-pure-reverse: if(themes.$brightness=='light', black, white);
+  $mixture-pure: if(themes.$brightness == 'light', white, black);
+  $mixture-pure-reverse: if(themes.$brightness == 'light', black, white);
 
-  @if ($fg-target==null) {
+  @if not $fg-target {
     // Auto compute fg-target.
-    @if (themes.$brightness=='light') {
+    @if themes.$brightness == 'light' {
       // In a light theme it's computed by changing the lightness of bg-main to 85%.
       $fg-target: color.change($bg-main, $lightness: 85%);
     } @else {
@@ -74,7 +74,7 @@
     $color: themes.get-theme-color(themes.$theme, $name);
     @each $swatch, $percentage in $swatches {
       $result: null;
-      @if ($percentage <= 100) {
+      @if $percentage <= 100 {
         $result: color.mix($color, $fg-0, $percentage);
       } @else {
         $result: color.mix($color, $mixture-pure-reverse, 200 - $percentage);
@@ -96,7 +96,7 @@
   // Fill in raw names as having the 500 swatch.
   @each $name in $color-names-all {
     --#{$name}: var(--#{$name}-500);
-    @if (colors.$compute-rgb-variables) {
+    @if colors.$compute-rgb-variables {
       --#{$name}-rgb: var(--#{$name}-500-rgb);
     }
   }
@@ -118,10 +118,10 @@
   --font: #{string.unquote($font)};
 }
 
-@if (module-variables.$enable-module-general) {
+@if module-variables.$enable-module-general {
   @include module-general.apply();
 }
 
-@if (module-variables.$enable-module-inputs) {
+@if module-variables.$enable-module-inputs {
   @include module-inputs.apply();
 }

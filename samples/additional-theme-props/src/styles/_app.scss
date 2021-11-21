@@ -2,7 +2,7 @@
 // Available scss variables inside: $theme, $theme-name, $brightness.
 @include ct-themes-apply {
   // This check isn't needed in case we have only the default theme category
-  @if ($category=='') {
+  @if $category == '' {
     --border-radius: #{map-get($theme, 'border-radius')};
   }
 }
