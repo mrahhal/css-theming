@@ -7,40 +7,30 @@ $compute-rgb-variables: false !default;
 $colors-light: (
   'grey': #697c93,
   'brown': #96663c,
-  'yellow': #f6d300,
-  'gold': #cc9a0e,
+  'yellow': #f1c40f,
   'orange': #f48701,
-  'red-orange': #fd6a01,
   'red': #ff1d25,
   'pink': #ff39f6,
   'purple': #952ff7,
   'violet': #c600ff,
   'indigo': #5700ff,
   'blue': #448aff,
-  'sky-blue': #00b9ff,
-  'lemon-green': #add80f,
-  'green-blue': #0ccb9b,
-  'green': #22d35d,
+  'green': #43b581,
 ) !default;
 
 // Colors used in dark themes.
 $colors-dark: (
   'grey': #697c93,
   'brown': #96663c,
-  'yellow': #f8dc33,
-  'gold': #cc9a0e,
+  'yellow': #f1c40f,
   'orange': #f69f34,
-  'red-orange': #fc5603,
   'red': #ff3948,
   'pink': #ff61f8,
   'purple': #d835ff,
   'violet': #aa59f9,
   'indigo': #7933ff,
   'blue': #69a1ff,
-  'sky-blue': #33c7ff,
-  'lemon-green': #add80f,
-  'green-blue': #3dd5af,
-  'green': #4edc7d,
+  'green': #43b581,
 ) !default;
 
 // Semantic colors to be used for semantic color references instead of a hard coded color.
