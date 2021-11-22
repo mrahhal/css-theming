@@ -1,7 +1,7 @@
-const style = getComputedStyle(document.body);
+const rootStyle = getComputedStyle(document.documentElement);
 
 export function getDesignValue(prop: string) {
-  const value = style.getPropertyValue(prop);
+  const value = rootStyle.getPropertyValue(prop);
   if (value) {
     return value.trim();
   }
