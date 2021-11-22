@@ -23,13 +23,11 @@
   }
 }
 
-@include themes.themes-loop {
-  .#{themes.$theme-css-name} body {
-    --ct-swatch-names: #{map.get(themes.$theme, 'swatch-names')};
-    --ct-fg-swatch-names: #{map.get(themes.$theme, 'fg-swatch-names')};
-    --ct-color-names: #{map.get(themes.$theme, 'color-names')};
-    --ct-semantic-color-names: #{map.get(themes.$theme, 'semantic-color-names')};
-  }
+@include themes.themes-apply {
+  --ct-swatch-names: #{map.get(themes.$theme, 'swatch-names')};
+  --ct-fg-swatch-names: #{map.get(themes.$theme, 'fg-swatch-names')};
+  --ct-color-names: #{map.get(themes.$theme, 'color-names')};
+  --ct-semantic-color-names: #{map.get(themes.$theme, 'semantic-color-names')};
 }
 
 @include themes.themes-apply {
