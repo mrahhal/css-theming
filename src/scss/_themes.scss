@@ -213,10 +213,10 @@ $themes-categories-applied-at: (
   --bd-focus: #{$bd-focus};
 }
 
-@mixin text-color-variables($text-color) {
+@mixin text-color-variables($brightness, $text-color) {
   --text-color-rgb: #{$text-color};
-  --text-color: rgb(var(--text-color-rgb));
-  --text-color-secondary: rgba(var(--text-color-rgb), .7);
+  --text-color: #{if($brightness == 'light', rgb(var(--text-color-rgb)), rgba(var(--text-color-rgb), .87))};
+  --text-color-secondary: #{if($brightness == 'light', rgba(var(--text-color-rgb), .7), rgba(var(--text-color-rgb), .6))};
 }
 
 @mixin themes-loop() {

@@ -105,7 +105,7 @@
       color.mix($fg-target, white, $percentage));
   }
 
-  @include themes.text-color-variables($text-color);
+  @include themes.text-color-variables(themes.$brightness, $text-color);
 
   --bg-main: #{$bg-main};
   --bg-input: #{$bg-input};
