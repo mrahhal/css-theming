@@ -11,7 +11,7 @@
     "lint": "npm run lint:ts && npm run lint:scss",
     "lint:ts": "npx eslint \"src/**/*.ts\"",
     "lint:scss": "npx stylelint \"src/**/*.scss\"",
-    "prepublishOnly": "npm run build"
+    "prepack": "npm run build"
   },
   "keywords": [
     "css",
