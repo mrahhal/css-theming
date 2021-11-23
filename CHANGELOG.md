@@ -6,6 +6,8 @@ N/A
 
 ## 2.0.0
 
+https://github.com/mrahhal/css-theming/releases/tag/v2.0.0
+
 ### Fixed
 * Pick up text-color theme prop if it exists before trying to set default by @mrahhal in https://github.com/mrahhal/css-theming/pull/27
 ### Added
