@@ -1,9 +1,9 @@
 {
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.exclude": {
     "node_modules": true
   },
   "search.exclude": {
     "dist": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
