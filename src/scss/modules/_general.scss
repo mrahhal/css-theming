@@ -1,4 +1,4 @@
-@use '../themes';
+@use "../themes";
 
 @mixin apply() {
   @include themes.themes-apply {

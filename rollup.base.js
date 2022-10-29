@@ -11,11 +11,11 @@ export function createRollupConfig(format, name = undefined) {
     output: {
       dir: outputDir,
       format,
-      name
+      name,
     },
     plugins: [typescript({
       rootDir: 'src/',
       ...typescriptOptions,
-    })]
-  }
+    })],
+  };
 }

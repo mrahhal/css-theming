@@ -1,15 +1,15 @@
-@use 'sass:color';
-@use 'sass:map';
-@use 'sass:meta';
-@use 'sass:string';
-@use 'colors';
-@use 'fgs';
-@use 'swatches';
-@use 'themes';
-@use 'module-variables';
+@use "sass:color";
+@use "sass:map";
+@use "sass:meta";
+@use "sass:string";
+@use "colors";
+@use "fgs";
+@use "swatches";
+@use "themes";
+@use "module-variables";
 
-@use 'modules/general' as module-general;
-@use 'modules/inputs' as module-inputs;
+@use "modules/general" as module-general;
+@use "modules/inputs" as module-inputs;
 
 // These will be used to obtain the values programmatically.
 :root {
@@ -24,38 +24,38 @@
 }
 
 @include themes.themes-apply {
-  --ct-swatch-names: #{map.get(themes.$theme, 'swatch-names')};
-  --ct-fg-swatch-names: #{map.get(themes.$theme, 'fg-swatch-names')};
-  --ct-color-names: #{map.get(themes.$theme, 'color-names')};
-  --ct-semantic-color-names: #{map.get(themes.$theme, 'semantic-color-names')};
+  --ct-swatch-names: #{map.get(themes.$theme, "swatch-names")};
+  --ct-fg-swatch-names: #{map.get(themes.$theme, "fg-swatch-names")};
+  --ct-color-names: #{map.get(themes.$theme, "color-names")};
+  --ct-semantic-color-names: #{map.get(themes.$theme, "semantic-color-names")};
 }
 
 @include themes.themes-apply {
   color-scheme: #{themes.$brightness};
 
-  $bg-main: map.get(themes.$theme, 'bg-main');
-  $bg-input: map.get(themes.$theme, 'bg-input');
-  $swatches: map.get(themes.$theme, 'swatches');
-  $fg-target: map.get(themes.$theme, 'fg-target');
-  $fg-swatches: map.get(themes.$theme, 'fg-swatches');
-  $bd: map.get(themes.$theme, 'bd');
-  $bd-focus: map.get(themes.$theme, 'bd-focus');
+  $bg-main: map.get(themes.$theme, "bg-main");
+  $bg-input: map.get(themes.$theme, "bg-input");
+  $swatches: map.get(themes.$theme, "swatches");
+  $fg-target: map.get(themes.$theme, "fg-target");
+  $fg-swatches: map.get(themes.$theme, "fg-swatches");
+  $bd: map.get(themes.$theme, "bd");
+  $bd-focus: map.get(themes.$theme, "bd-focus");
 
-  $color-names: map.get(themes.$theme, 'color-names');
-  $semantic-color-names: map.get(themes.$theme, 'semantic-color-names');
-  $color-names-all: map.get(themes.$theme, 'color-names-all');
-  $colors-text-scale: map.get(themes.$theme, 'colors-text-scale');
-  $swatch-names: map.get(themes.$theme, 'swatch-names');
+  $color-names: map.get(themes.$theme, "color-names");
+  $semantic-color-names: map.get(themes.$theme, "semantic-color-names");
+  $color-names-all: map.get(themes.$theme, "color-names-all");
+  $colors-text-scale: map.get(themes.$theme, "colors-text-scale");
+  $swatch-names: map.get(themes.$theme, "swatch-names");
 
-  $font: map.get(themes.$theme, 'font');
-  $text-color: map.get(themes.$theme, 'text-color');
+  $font: map.get(themes.$theme, "font");
+  $text-color: map.get(themes.$theme, "text-color");
 
-  $mixture-pure: if(themes.$brightness == 'light', white, black);
-  $mixture-pure-reverse: if(themes.$brightness == 'light', black, white);
+  $mixture-pure: if(themes.$brightness == "light", white, black);
+  $mixture-pure-reverse: if(themes.$brightness == "light", black, white);
 
   @if not $fg-target {
     // Auto compute fg-target.
-    @if themes.$brightness == 'light' {
+    @if themes.$brightness == "light" {
       // In a light theme it's computed by changing the lightness of bg-main to 85%.
       $fg-target: color.change($bg-main, $lightness: 85%);
     } @else {
@@ -88,7 +88,7 @@
     @each $swatch in $swatch-names {
       @include colors.set-semantic-color-variable-with-rgb($name, $swatch, $target);
     }
-    @include colors.set-semantic-color-variable-with-rgb($name, 'text', $target);
+    @include colors.set-semantic-color-variable-with-rgb($name, "text", $target);
   }
 
   // Fill in raw names as having the 500 swatch.
@@ -102,7 +102,8 @@
   @each $level, $percentage in $fg-swatches {
     @include colors.set-color-variable-with-rgb(
       --fg-#{$level},
-      color.mix($fg-target, white, $percentage));
+      color.mix($fg-target, white, $percentage)
+    );
   }
 
   @include themes.text-color-variables(themes.$brightness, $text-color);

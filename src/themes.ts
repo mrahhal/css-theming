@@ -1,19 +1,23 @@
-import { getDesignValue, getThemeCssNames } from './design-values';
-import { Brightness, Theme } from './models';
+import { getDesignValue, getThemeCssNames } from "./design-values";
+import { Brightness, Theme } from "./models";
 
 const htmlElement = document.documentElement;
 
-const DEFAULT_CATEGORY_KEY = '__DEFAULT_CATEGORY__';
+const DEFAULT_CATEGORY_KEY = "__DEFAULT_CATEGORY__";
 
 const currentThemes: { [category: string]: Theme } = {};
 
 function _getCurrentTheme(category: string | null) {
-  if (category === null) { category = DEFAULT_CATEGORY_KEY; }
+  if (category === null) {
+    category = DEFAULT_CATEGORY_KEY;
+  }
   return currentThemes[category];
 }
 
 function _setCurrentTheme(category: string | null, theme: Theme) {
-  if (category === null) { category = DEFAULT_CATEGORY_KEY; }
+  if (category === null) {
+    category = DEFAULT_CATEGORY_KEY;
+  }
   currentThemes[category] = theme;
 }
 
@@ -30,23 +34,23 @@ function _removeThemeClasses(theme: Theme) {
 let themes: Theme[];
 
 function getThemeBrightnessCssName(theme: Theme) {
-  const categoryText = theme.category ? `${theme.category}-` : '';
+  const categoryText = theme.category ? `${theme.category}-` : "";
   return `theme-${categoryText}brightness-${theme.brightness}`;
 }
 
 function getUserPreferredBrightness(): Brightness {
   // We can only do that if the browser supports matchMedia.
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
+  if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return "dark";
   }
 
-  return 'light';
+  return "light";
 }
 
 export function initializeTheming(theme?: Theme | null, category: string | null = null) {
   if (!theme) {
     const preferredBrightness = getUserPreferredBrightness();
-    theme = getThemes(category).filter(t => t.brightness == preferredBrightness)[0];
+    theme = getThemes(category).filter((t) => t.brightness == preferredBrightness)[0];
   }
   _addThemeClasses(theme);
   _setCurrentTheme(category, theme);
@@ -64,7 +68,7 @@ export function getCurrentTheme(category: string | null = null) {
 }
 
 export function getThemes(category: string | null = null) {
-  return getAllThemes().filter(t => t.category === category);
+  return getAllThemes().filter((t) => t.category === category);
 }
 
 export function getTheme(themeName: string, category: string | null = null) {
@@ -77,10 +81,12 @@ export function getTheme(themeName: string, category: string | null = null) {
 }
 
 export function getAllThemes() {
-  if (themes) { return themes; }
+  if (themes) {
+    return themes;
+  }
 
   const names = getThemeCssNames();
-  return themes = names.map(cssName => {
+  return (themes = names.map((cssName) => {
     const category = getDesignValue(`--ct-${cssName}-props-category`) as string;
     const name = getDesignValue(`--ct-${cssName}-props-name`) as string;
     const brightness = getDesignValue(`--ct-${cssName}-props-brightness`) as Brightness;
@@ -90,5 +96,5 @@ export function getAllThemes() {
       cssName,
       brightness,
     };
-  });
+  }));
 }

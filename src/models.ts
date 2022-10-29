@@ -1,4 +1,4 @@
-export type Brightness = 'light' | 'dark';
+export type Brightness = "light" | "dark";
 
 export interface Theme {
   category: string | null;

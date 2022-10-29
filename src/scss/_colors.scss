@@ -1,45 +1,45 @@
-@use 'sass:color';
+@use "sass:color";
 // Colors are the backbone of a theme. A set of color maps are specified for each brightness mode.
 
 $compute-rgb-variables: false !default;
 
 // Colors used in light themes.
 $colors-light: (
-  'grey': #697c93,
-  'brown': #96663c,
-  'yellow': #f1c40f,
-  'orange': #f48701,
-  'red': #ff1d25,
-  'pink': #ff39f6,
-  'purple': #952ff7,
-  'violet': #c600ff,
-  'indigo': #5700ff,
-  'blue': #448aff,
-  'green': #43b581,
+  "grey": #697c93,
+  "brown": #96663c,
+  "yellow": #f1c40f,
+  "orange": #f48701,
+  "red": #ff1d25,
+  "pink": #ff39f6,
+  "purple": #952ff7,
+  "violet": #c600ff,
+  "indigo": #5700ff,
+  "blue": #448aff,
+  "green": #43b581,
 ) !default;
 
 // Colors used in dark themes.
 $colors-dark: (
-  'grey': #697c93,
-  'brown': #96663c,
-  'yellow': #f1c40f,
-  'orange': #f69f34,
-  'red': #ff3948,
-  'pink': #ff61f8,
-  'purple': #d835ff,
-  'violet': #aa59f9,
-  'indigo': #7933ff,
-  'blue': #69a1ff,
-  'green': #43b581,
+  "grey": #697c93,
+  "brown": #96663c,
+  "yellow": #f1c40f,
+  "orange": #f69f34,
+  "red": #ff3948,
+  "pink": #ff61f8,
+  "purple": #d835ff,
+  "violet": #aa59f9,
+  "indigo": #7933ff,
+  "blue": #69a1ff,
+  "green": #43b581,
 ) !default;
 
 // Semantic colors to be used for semantic color references instead of a hard coded color.
 $semantic-colors: (
-  'primary': 'purple',
-  'success': 'green',
-  'info': 'blue',
-  'warning': 'orange',
-  'danger': 'red',
+  "primary": "purple",
+  "success": "green",
+  "info": "blue",
+  "warning": "orange",
+  "danger": "red",
 ) !default;
 
 // Main text color used in light themes.

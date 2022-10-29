@@ -12,7 +12,7 @@ export function getDesignValue(prop: string) {
 export function getDelimitedValue(prop: string) {
   const value = getDesignValue(prop);
   if (value) {
-    return value.split(',').map(x => x.trim());
+    return value.split(",").map((x) => x.trim());
   }
 
   return null;
@@ -25,21 +25,23 @@ let semanticColorNames: string[];
 let themeCssNames: string[];
 
 export function getSwatchNames() {
-  return swatchNames || (swatchNames = getDelimitedValue('--ct-swatch-names')!);
+  return swatchNames || (swatchNames = getDelimitedValue("--ct-swatch-names")!);
 }
 
 export function getFgSwatchNames() {
-  return fgSwatchNames || (fgSwatchNames = getDelimitedValue('--ct-fg-swatch-names')!);
+  return fgSwatchNames || (fgSwatchNames = getDelimitedValue("--ct-fg-swatch-names")!);
 }
 
 export function getColorNames() {
-  return colorNames || (colorNames = getDelimitedValue('--ct-color-names')!);
+  return colorNames || (colorNames = getDelimitedValue("--ct-color-names")!);
 }
 
 export function getSemanticColorNames() {
-  return semanticColorNames || (semanticColorNames = getDelimitedValue('--ct-semantic-color-names')!);
+  return (
+    semanticColorNames || (semanticColorNames = getDelimitedValue("--ct-semantic-color-names")!)
+  );
 }
 
 export function getThemeCssNames() {
-  return themeCssNames || (themeCssNames = getDelimitedValue('--ct-theme-css-names')!);
+  return themeCssNames || (themeCssNames = getDelimitedValue("--ct-theme-css-names")!);
 }
