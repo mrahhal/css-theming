@@ -1,4 +1,5 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
@@ -13,21 +14,28 @@ N/A
 https://github.com/mrahhal/css-theming/releases/tag/v2.0.0
 
 ### Fixed
-* Pick up text-color theme prop if it exists before trying to set default by @mrahhal in https://github.com/mrahhal/css-theming/pull/27
+
+- Pick up text-color theme prop if it exists before trying to set default by @mrahhal in https://github.com/mrahhal/css-theming/pull/27
+
 ### Added
-* Set css color-scheme based on current theme brightness by @mrahhal in https://github.com/mrahhal/css-theming/pull/20
-* Allow configuring color text lightness scaling and update default scaling in dark themes by @mrahhal in https://github.com/mrahhal/css-theming/pull/25
-* Add use-colors theme config by @mrahhal in https://github.com/mrahhal/css-theming/pull/32
+
+- Set css color-scheme based on current theme brightness by @mrahhal in https://github.com/mrahhal/css-theming/pull/20
+- Allow configuring color text lightness scaling and update default scaling in dark themes by @mrahhal in https://github.com/mrahhal/css-theming/pull/25
+- Add use-colors theme config by @mrahhal in https://github.com/mrahhal/css-theming/pull/32
+
 ### Changed
-* Flip swatches in dark themes to make them go lighter with elevation by @mrahhal in https://github.com/mrahhal/css-theming/pull/23
-* Change default category's applied at to be the root element (html) by @mrahhal in https://github.com/mrahhal/css-theming/pull/24
-* Remove $fg-target-[light|dark] and auto compute them if not overriden in theme by @mrahhal in https://github.com/mrahhal/css-theming/pull/30
-* Rename functions/mixins to a more consistent naming by @mrahhal in https://github.com/mrahhal/css-theming/pull/31
-* Remove and update some default colors by @mrahhal in https://github.com/mrahhal/css-theming/pull/33
-* Change default bg-input vars by @mrahhal in https://github.com/mrahhal/css-theming/pull/34
-* Update default text-color by @mrahhal in https://github.com/mrahhal/css-theming/pull/36
+
+- Flip swatches in dark themes to make them go lighter with elevation by @mrahhal in https://github.com/mrahhal/css-theming/pull/23
+- Change default category's applied at to be the root element (html) by @mrahhal in https://github.com/mrahhal/css-theming/pull/24
+- Remove $fg-target-[light|dark] and auto compute them if not overriden in theme by @mrahhal in https://github.com/mrahhal/css-theming/pull/30
+- Rename functions/mixins to a more consistent naming by @mrahhal in https://github.com/mrahhal/css-theming/pull/31
+- Remove and update some default colors by @mrahhal in https://github.com/mrahhal/css-theming/pull/33
+- Change default bg-input vars by @mrahhal in https://github.com/mrahhal/css-theming/pull/34
+- Update default text-color by @mrahhal in https://github.com/mrahhal/css-theming/pull/36
+
 ### Removed
-* Remove deprecated `--text-color-raw` by @mrahhal in https://github.com/mrahhal/css-theming/pull/21
+
+- Remove deprecated `--text-color-raw` by @mrahhal in https://github.com/mrahhal/css-theming/pull/21
 
 **Full Changelog**: https://github.com/mrahhal/css-theming/compare/v1.5.0...v2.0.0
 
