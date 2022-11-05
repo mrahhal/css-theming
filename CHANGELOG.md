@@ -11,8 +11,6 @@ N/A
 
 ## 2.0.0 - 2021-11-23
 
-[**Full diff**](https://github.com/mrahhal/css-theming/compare/v1.5.0...v2.0.0)
-
 ### Fixed
 
 - Pick up text-color theme prop if it exists before trying to set default ([#27](https://github.com/mrahhal/css-theming/pull/27) by [@mrahhal](https://github.com/mrahhal))
@@ -37,12 +35,14 @@ N/A
 
 - Remove deprecated `--text-color-raw` ([#21](https://github.com/mrahhal/css-theming/pull/21) by [@mrahhal](https://github.com/mrahhal))
 
-## 1.5.0
+[**Full diff**](https://github.com/mrahhal/css-theming/compare/v1.5.0...v2.0.0)
 
-[**Full diff**](https://github.com/mrahhal/css-theming/compare/v1.4.0...v1.5.0)
+## 1.5.0
 
 - Allow using themes-apply inside a selector ([#16](https://github.com/mrahhal/css-theming/issues/16))
 - Compute rgb variables for fgs too ([#15](https://github.com/mrahhal/css-theming/issues/15))
+
+[**Full diff**](https://github.com/mrahhal/css-theming/compare/v1.4.0...v1.5.0)
 
 ## 1.4.0
 
